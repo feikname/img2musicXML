@@ -1,2 +1,2 @@
 # img2musicXML
-Convert images to sheet
+Convert sheets in image format to MusicXML (WIP)
