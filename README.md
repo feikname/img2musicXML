@@ -27,7 +27,7 @@ The v0.1-Alpha is under heavy development currently.
 # Contributing
 Contributing is not yet allowed.
 
-As soon as v0.1-Alpha is finished, contributing guideleness will be added.
+As soon as v0.1-Alpha is finished, contributing guidelines will be added.
 
 # License
 This software is licensed under the Apache v2 License
