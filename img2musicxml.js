@@ -4,3 +4,6 @@
 # Apache v2 License
 #
 */
+
+// Create img2musicXML (abbreviated as i2mx) namespace
+var i2mx = im2x || { };
