@@ -23,8 +23,7 @@ var JsCheckup = function() {
 
 var jsCheckup = new JsCheckup();
 
-// @TODO: Check window.onload vs document.onload 
 // @TODO: Use event listener instead of onload
-document.onload = function() {
+window.onload = function() {
 	jsCheckup.activate();
 }
