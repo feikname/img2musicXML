@@ -16,9 +16,8 @@ var JsCheckup = function() {
 		var divList = document.getElementsByClassName(this.divClassName);
 		
 		// @TODO: Implement multiple divs support
-		divList[0].innerHTML = "No checlist for now, but img2musicXML loaded successfully!"; // @TODO: Multi-line
+		divList[0].innerHTML = "No checklist for now, but img2musicXML loaded successfully!"; // @TODO: Multi-line
 	}
-	
 }
 
 var jsCheckup = new JsCheckup();
