@@ -6,7 +6,7 @@
 */
 
 // Create img2musicXML (abbreviated as i2mx) namespace
-var i2mx = im2x || { };
+var i2mx = i2mx || { };
 
 // Create JsCheckup class (@TODO: Move to inside namespace)
 var JsCheckup = function() {
