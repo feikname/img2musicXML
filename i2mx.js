@@ -18,13 +18,13 @@ var JsCheckup = function() {
 		// Initial values
 		var div = document.getElementById(this.divId);
 		var EOL = "<br>"
-		var checkupText = EOL;
+		var checkupText = "";
 		
 		// Start testing
 		checkupText += "Starting tests... " + EOL;
 		
 		if(window.File && window.FileReader && window.FileList && window.Blob) {
-			checkupText += "File and Blob APIs - OK " + EOL;
+			checkupText += "File and Blob APIs -> OK " + EOL;
 		}
 		
 		// Update DOM
