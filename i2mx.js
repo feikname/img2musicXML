@@ -13,7 +13,7 @@ var JsCheckup = function() {
 	this.divId = "i2mx-checkup";
 	
 	this.activate = function() {
-		var div = document.getElementsByClassName(this.divId);
+		var div = document.getElementId(this.divId);
 		
 		div.innerHTML = "No checklist for now, but img2musicXML loaded successfully!"; // @TODO: Multi-line
 	}
