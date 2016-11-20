@@ -18,7 +18,7 @@ var JsCheckup = function() {
 		// Initial values
 		var div = document.getElementById(this.divId);
 		var EOL = "<br>"
-		var checkupText = "";
+		var checkupText = "<pre>";
 		
 		// Start testing
 		checkupText += "Starting tests... " + EOL;
@@ -28,6 +28,7 @@ var JsCheckup = function() {
 		}
 		
 		// Update DOM
+		checkupText += "</pre>";
 		div.innerHTML = checkupText;
 	}
 }
