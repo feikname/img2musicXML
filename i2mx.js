@@ -10,13 +10,13 @@ var i2mx = i2mx || { };
 
 // Create JsCheckup class (@TODO: Move to inside namespace)
 var JsCheckup = function() {
-	this.divClassName = "i2mx-checkup";
+	this.divId = "i2mx-checkup";
 	
 	this.activate = function() {
-		var divList = document.getElementsByClassName(this.divClassName);
+		var div = document.getElementsByClassName(this.divId);
 		
 		// @TODO: Implement multiple divs support
-		divList[0].innerHTML = "No checklist for now, but img2musicXML loaded successfully!"; // @TODO: Multi-line
+		div.innerHTML = "No checklist for now, but img2musicXML loaded successfully!"; // @TODO: Multi-line
 	}
 }
 
