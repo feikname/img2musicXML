@@ -13,9 +13,22 @@ var JsCheckup = function() {
 	this.divId = "i2mx-checkup";
 	
 	this.activate = function() {
-		var div = document.getElementById(this.divId);
+		// @TODO: Use HTML generator
 		
-		div.innerHTML = "No checklist for now, but img2musicXML loaded successfully!"; // @TODO: Multi-line
+		// Initial values
+		var div = document.getElementById(this.divId);
+		var EOL = "<br>"
+		var checkupText = "";
+		
+		// Start testing
+		checkupText += "Starting tests... " + EOL;
+		
+		if(window.File && window.FileReader && window.FileList && window.Blob) {
+			checkupText += "File and Blob APIs -> OK " + EOL;
+		}
+		
+		// Update DOM
+		div.innerHTML = checkupText;
 	}
 }
 
