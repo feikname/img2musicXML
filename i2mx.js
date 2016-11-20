@@ -15,7 +15,6 @@ var JsCheckup = function() {
 	this.activate = function() {
 		var div = document.getElementsByClassName(this.divId);
 		
-		// @TODO: Implement multiple divs support
 		div.innerHTML = "No checklist for now, but img2musicXML loaded successfully!"; // @TODO: Multi-line
 	}
 }
