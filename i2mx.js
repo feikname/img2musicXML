@@ -34,6 +34,7 @@ var JsCheckup = function() {
 	}
 }
 
+// Variables
 var jsCheckup = new JsCheckup();
 
 // @TODO: Use event listener instead of onload
