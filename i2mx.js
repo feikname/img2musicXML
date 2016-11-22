@@ -14,6 +14,7 @@ var JsCheckup = function() {
 	
 	this.activate = function() {
 		// @TODO: Use HTML generator
+		// @TODO: Wait for this to be ready to load other components.
 		
 		// Initial values
 		var div = document.getElementById(this.divId);
