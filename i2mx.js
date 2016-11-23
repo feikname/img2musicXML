@@ -12,6 +12,14 @@ var i2mx = i2mx || { };
 var JsCheckup = function() {
 	this.divId = "i2mx-checkup";
 	
+	this.checkForId = function(id) {
+		if(document.getElementById(id) !== null) {
+			return true;
+		}
+		
+		return false;
+	}
+	
 	this.activate = function() {
 		// @TODO: Use HTML generator
 		// @TODO: Wait for this to be ready to load other components.
@@ -21,11 +29,28 @@ var JsCheckup = function() {
 		var EOL = "<br>"
 		var checkupText = "<pre>";
 		
-		// Start testing
+		// Do the testing
 		checkupText += "Starting tests... " + EOL;
 		
 		if(window.File && window.FileReader && window.FileList && window.Blob) {
 			checkupText += "File and Blob APIs -> OK " + EOL;
+		}
+		
+		var idList = ["i2mx-image-manager", "i2mx-img_man-file-input", 
+			"i2mx-img_man-add-file-btn", "i2mx-img_man-file-list"];
+			
+		for(var i=0; i<idList.length; i++) {
+			var id = idList[i];
+			
+			checkupText += "Checking if \"" + id + "\" exists... -> ";
+			
+			if(this.checkForId(id)) {
+				checkupText += "OK";
+			} else {
+				checkupText += "- ERROR! -";
+			}
+			
+			checkupText += EOL;
 		}
 		
 		// Update DOM
