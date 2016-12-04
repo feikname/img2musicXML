@@ -20,7 +20,7 @@ var JsCheckup = function() {
 		return false;
 	}
 	
-	this.activate = function() {
+	this.checkEverything = function() {
 		// @TODO: Use HTML generator
 		// @TODO: Wait for this to be ready to load other components.
 		
@@ -64,5 +64,5 @@ var jsCheckup = new JsCheckup();
 
 // @TODO: Use event listener instead of onload
 window.onload = function() {
-	jsCheckup.activate();
+	jsCheckup.checkEverything();
 }
