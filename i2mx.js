@@ -86,15 +86,67 @@ var JsCheckup = function() {
 	}
 }
 
+var ImageManager = function() {
+	this.fileListId = "i2mx-img_man-file-list";
+	this.files = [];
+	
+	this.createImgHTML = function() {
+	}
+	
+	this.renderFileList = function() {
+		var files = this.files;
+		var fileListEl = document.getElementById(this.fileListId);
+		
+		if(files.length == 0) {
+			fileListEl.innerHTML = "Oops! There are no files here yet."
+			return;
+		}
+		
+		var newHTML = "";
+		for(var i=0, img; img=files[i]; i++) {
+			newHTML += (i+1) + " - " + img.name + "<br>"
+		}
+		
+		fileListEl.innerHTML = newHTML;
+	}
+	
+	this.addFile = function(file) {
+		if(file.type.match('image.*')) {
+			this.files.push(file);
+			return;
+		}
+		
+		window.alert("Warning: non-image file: " + file.name);
+	}
+}
+
 // Variables
 var jsCheckup = new JsCheckup();
+var files = new ImageManager();
 
 // Functions
 function loadEverything() {
 	// Show last modification date to user
-	var lastModification = "2016-12-04";
+	var lastModification = "2016-12-20";
 	var el = document.getElementById("i2mx-ver_info-last-modification");
 	el.innerHTML=lastModification;
+	
+	// Load i2mx image manager (img_man)
+	var el = document.getElementById("i2mx-img_man-add-file-btn");
+	el.onclick = window.addImages;
+}
+
+function addImages() {
+	var input_el = document.getElementById("i2mx-img_man-file-input");
+	var fileList = input_el.files;
+	
+	for(var i=0; i<fileList.length; i++) {
+		window.files.addFile(fileList[i]);
+	}	
+	
+	window.files.renderFileList();
+	
+	input_el.value = ""; // Reset
 }
 
 // @TODO: Use event listener instead of onload
