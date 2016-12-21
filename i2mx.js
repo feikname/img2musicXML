@@ -6,10 +6,13 @@
 */
 
 // Create img2musicXML (abbreviated as i2mx) namespace
-var i2mx = i2mx || { };
+var i2mx       = {};
+i2mx.classes   = {};
+i2mx.instances = {};
+i2mx.functions = {};
+i2mx.evt       = {};
 
-// Create JsCheckup class (@TODO: Move to inside namespace)
-var JsCheckup = function() {
+i2mx.classes.JsCheckup = function() {
 	this.divId = "i2mx-checkup";
 	
 	this.checkForId = function(id) {
@@ -20,10 +23,10 @@ var JsCheckup = function() {
 		return false;
 	}
 	
-	this.checkEverything = function() {
+	this.check = function() {
 		// @TODO: Use HTML generator
 		
-		// Check if i2mx can display the errors checking to the user
+		// Check if i2mx can display Javascript Checkup to the user
 		if(!(this.checkForId(this.divId))) {
 			document.documentElement.innerHTML = "i2mx fatal error."
 			return false;
@@ -86,14 +89,14 @@ var JsCheckup = function() {
 	}
 }
 
-var ImageManager = function() {
+i2mx.classes.ImageManager = function() {
 	this.fileListId = "i2mx-img_man-file-list";
 	this.files = [];
 	
 	this.createImgHTML = function() {
 	}
 	
-	this.renderFileList = function() {
+	this.render = function() {
 		var files = this.files;
 		var fileListEl = document.getElementById(this.fileListId);
 		
@@ -110,7 +113,7 @@ var ImageManager = function() {
 		fileListEl.innerHTML = newHTML;
 	}
 	
-	this.addFile = function(file) {
+	this.add = function(file) {
 		if(file.type.match('image.*')) {
 			this.files.push(file);
 			return;
@@ -120,40 +123,43 @@ var ImageManager = function() {
 	}
 }
 
-// Variables
-var jsCheckup = new JsCheckup();
-var files = new ImageManager();
+// Instantiate classes
+i2mx.instances.jsCheckup    = new i2mx.classes.JsCheckup();
+i2mx.instances.imageManager = new i2mx.classes.ImageManager();
 
-// Functions
-function loadEverything() {
+// Create functions
+i2mx.load = function() {
 	// Show last modification date to user
-	var lastModification = "2016-12-20";
+	var lastModification = "2016-12-21"; // YYYY-MM-DD (BRT)
 	var el = document.getElementById("i2mx-ver_info-last-modification");
 	el.innerHTML=lastModification;
 	
 	// Load i2mx image manager (img_man)
 	var el = document.getElementById("i2mx-img_man-add-file-btn");
-	el.onclick = window.addImages;
+	el.onclick = i2mx.evt.addImage;
 }
 
-function addImages() {
+// Events
+i2mx.evt.addImage = function() {
 	var input_el = document.getElementById("i2mx-img_man-file-input");
 	var fileList = input_el.files;
 	
 	for(var i=0; i<fileList.length; i++) {
-		window.files.addFile(fileList[i]);
+		i2mx.instances.imageManager.add(fileList[i]);
 	}	
 	
-	window.files.renderFileList();
+	i2mx.instances.imageManager.render();
 	
 	input_el.value = ""; // Reset
 }
 
 // @TODO: Use event listener instead of onload
 window.onload = function() {
-	if(!jsCheckup.checkEverything()) {
+	var jsCheckup = i2mx.instances.jsCheckup;
+
+	if(!jsCheckup.check()) {
 		return;
 	}
 	
-	loadEverything();
+	i2mx.load();
 }
