@@ -22,7 +22,7 @@ Altough it won't work in advanced sheets for now, it covers most basic needs.
 More features will be added in the future.
 
 # Development status
-The v0.1-Alpha is under heavy development currently.
+The v0.1-Alpha is under very slow development currently.
 
 # Contributing
 Contributing is not yet allowed.
