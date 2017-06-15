@@ -20,12 +20,22 @@ window.i2mx.ImageManager = new (function() {
 
         i2mx.Elements.fileInput().value = ""; // Reset
     }
-    this.event.removeFile = function() {
-        // TODO: Implement
+
+    this.event.removeFile = function(clickedButton) {
+        let id = clickedButton.target.getAttribute("data-id");
+        id = parseInt(id);
+
+        i2mx.ImageManager.files.splice(id, 1); // Delete image from the array
+
+        i2mx.ImageManager.render();
     }
 
     this.createImgHTML = function(img, id) {
-        let newString = (id+1) + " - " + img.name + "<br>";
+        let newString = (id+1) + " - " + img.name +
+            " (<input type=\"submit\" data-id=\"" + id + "\" value=\"" +
+            "Remove from list" + "\" class=\"" +
+            "i2mx-img_man-remove-item-btn\">)" + "<br>";
+
         return newString;
     }
 
@@ -44,6 +54,11 @@ window.i2mx.ImageManager = new (function() {
         }
 
         fileListEl.innerHTML = newHTML;
+
+        let btns = document.getElementsByClassName("i2mx-img_man-remove-item-btn");
+        for(var id=0, btn; btn=btns[id]; id++) {
+            btn.addEventListener("click", this.event.removeFile);
+        }
     }
 
     this.add = function(file) {
