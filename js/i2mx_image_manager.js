@@ -67,7 +67,9 @@ window.i2mx.ImageManager = new (function() {
             return true;
         }
 
-        console.log(file.name + " is not an image file!");
+        console.log(file.name + " is not an image file!" + " (" +
+            file.type + ")");
+
         return false;
     }
 
