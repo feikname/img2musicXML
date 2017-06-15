@@ -14,7 +14,7 @@ This tool was made to work where automatic converters don't:
  * Works for poor quality images as long as **you** can see the lines and notes.
  * Works well with hand-written sheets
  * Works with staffs in diagonal and/or with irregular lines
- * Rotate images inside the tool
+ * ~Rotate images inside the tool~ (won't be available in v0.1-Alpha)
 
 
 Altough it won't work in advanced sheets for now, it covers most basic needs.
