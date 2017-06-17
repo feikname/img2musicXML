@@ -4,9 +4,11 @@
     <title>img2musicMXL</title>
     <meta charset="UTF-8">
     <link rel="icon" href="favicon.png">
+    <script src="js/tingle.min.js"></script>
     <script src="js/i2mx_base.js"></script>
     <script src="js/i2mx_image_manager.js"></script>
     <script src="js/i2mx_loader.js"></script>
+    <link rel="stylesheet" href="css/tingle.min.css">
     <style>
         body {
             /* 1024x768 */
@@ -34,25 +36,42 @@
             cursor: pointer;
         }
 
+        .button-as-text {
+            text-decoration: none;
+            border: none;
+            background: transparent;
+            margin-left: 0;
+            margin-right: 0;
+            padding: 0;
+        }
+
         .i2mx-img_man-remove-item-btn {
-			color: darkred;
-			text-decoration: none;
-			border: none;
-			background: transparent;
-			margin-left: 0;
-			margin-right: 0;
-			padding: 0;
-		}
+            color: darkred;
+        }
 
        .i2mx-img_man-remove-item-btn:hover {
-			color: darkred;
-			text-decoration: underline;
-		}
+            color: darkred;
+            text-decoration: underline;
+        }
 
        .i2mx-img_man-remove-item-btn:active {
-			color: red;
-			text-decoration: underline;
-		}
+            color: red;
+            text-decoration: underline;
+        }
+
+        .i2mx-img_man-visualize-item-btn {
+            color: royalblue;
+        }
+
+        .i2mx-img_man-visualize-item-btn:hover {
+            color: royalblue;
+            text-decoration: underline;
+        }
+
+       .i2mx-img_man-visualize-item-btn:active {
+            color: blue;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>

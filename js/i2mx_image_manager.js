@@ -30,11 +30,31 @@ window.i2mx.ImageManager = new (function() {
         i2mx.ImageManager.render();
     }
 
+    this.event.visualizeFile = function(clickedButton) {
+        let id = clickedButton.target.getAttribute("data-id");
+        id = parseInt(id);
+
+        let fileReader = new FileReader();
+        fileReader.onload = function(e) {
+            let dataUrl = e.target.result;
+
+            let modal = new tingle.modal();
+            modal.setContent("<img src=\"" + dataUrl + "\"></img>");
+
+            modal.open();
+        }
+
+        fileReader.readAsDataURL(i2mx.ImageManager.files[id]);
+    }
+
     this.createImgHTML = function(img, id) {
         let newString = (id+1) + " - " + img.name +
             " (<input type=\"submit\" data-id=\"" + id + "\" value=\"" +
             "Remove from list" + "\" class=\"" +
-            "i2mx-img_man-remove-item-btn\">)" + "<br>";
+            "i2mx-img_man-remove-item-btn button-as-text\">)" +
+            " (<input type=\"submit\" data-id=\"" + id + "\" value=\"" +
+            "View" + "\" class=\"" +
+            "i2mx-img_man-visualize-item-btn button-as-text\">)" + "<br>";
 
         return newString;
     }
@@ -55,9 +75,16 @@ window.i2mx.ImageManager = new (function() {
 
         fileListEl.innerHTML = newHTML;
 
-        let btns = document.getElementsByClassName("i2mx-img_man-remove-item-btn");
+        let btns;
+
+        btns = document.getElementsByClassName("i2mx-img_man-remove-item-btn");
         for(var id=0, btn; btn=btns[id]; id++) {
             btn.addEventListener("click", this.event.removeFile);
+        }
+
+        btns = document.getElementsByClassName("i2mx-img_man-visualize-item-btn");
+        for(var id=0, btn; btn=btns[id]; id++) {
+            btn.addEventListener("click", this.event.visualizeFile);
         }
     }
 
