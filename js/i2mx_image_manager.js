@@ -51,10 +51,10 @@ window.i2mx.ImageManager = new (function() {
         let newString = (id+1) + " - " + img.name +
             " (<input type=\"submit\" data-id=\"" + id + "\" value=\"" +
             "Remove from list" + "\" class=\"" +
-            "i2mx-img_man-remove-item-btn button-as-text\">)" +
+            "i2mx-img_mngr-remove-item-btn button-as-text\">)" +
             " (<input type=\"submit\" data-id=\"" + id + "\" value=\"" +
             "View" + "\" class=\"" +
-            "i2mx-img_man-visualize-item-btn button-as-text\">)" + "<br>";
+            "i2mx-img_mngr-visualize-item-btn button-as-text\">)" + "<br>";
 
         return newString;
     }
@@ -77,12 +77,12 @@ window.i2mx.ImageManager = new (function() {
 
         let btns;
 
-        btns = document.getElementsByClassName("i2mx-img_man-remove-item-btn");
+        btns = document.getElementsByClassName("i2mx-img_mngr-remove-item-btn");
         for(var id=0, btn; btn=btns[id]; id++) {
             btn.addEventListener("click", this.event.removeFile);
         }
 
-        btns = document.getElementsByClassName("i2mx-img_man-visualize-item-btn");
+        btns = document.getElementsByClassName("i2mx-img_mngr-visualize-item-btn");
         for(var id=0, btn; btn=btns[id]; id++) {
             btn.addEventListener("click", this.event.visualizeFile);
         }

@@ -26,17 +26,17 @@ i2mx.Elements = new (function() {
     };
 
     this.imageList = function() {
-        let id = "i2mx-img_man-file-list";
+        let id = "i2mx-img_mngr-file-list";
         return document.getElementById(id);
     };
 
     this.addImageBtn = function() {
-        let id = "i2mx-img_man-add-file-btn";
+        let id = "i2mx-img_mngr-add-file-btn";
         return document.getElementById(id);
     };
 
     this.fileInput = function() {
-        let id = "i2mx-img_man-file-input";
+        let id = "i2mx-img_mngr-file-input";
         return document.getElementById(id);
     };
 });
