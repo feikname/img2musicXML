@@ -39,7 +39,7 @@ window.i2mx.ImageManager = new (function() {
             let dataUrl = e.target.result;
 
             let modal = new tingle.modal();
-            modal.setContent("<img src=\"" + dataUrl + "\"></img>");
+            modal.setContent("<img style=\"max-height: 100%; max-width: 100%\" src=\"" + dataUrl + "\"></img>");
 
             modal.open();
         }
