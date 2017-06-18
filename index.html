@@ -7,6 +7,7 @@
     <script src="js/tingle.min.js"></script>
     <script src="js/i2mx_base.js"></script>
     <script src="js/i2mx_image_manager.js"></script>
+    <script src="js/i2mx_page_manager.js"></script>
     <script src="js/i2mx_loader.js"></script>
     <link rel="stylesheet" href="css/tingle.min.css">
     <style>
@@ -25,7 +26,7 @@
             background: white;
         }
 
-        #i2mx-image-manager {
+        .section {
             background: white;
             border: 2px solid black;
             margin: 0;
@@ -116,9 +117,9 @@
 
     <br>
 
-    <div id="i2mx-image-manager">
+    <div id="i2mx-image-manager" class="section">
         Add file(s): <input type="file" id="i2mx-img_mngr-file-input" accept="image/*" multiple> |
-        <input type="submit" id="i2mx-img_mngr-add-file-btn" value="Add"!><br>
+        <input type="submit" id="i2mx-img_mngr-add-file-btn" value="Add"><br>
 
         <br>
 
@@ -132,8 +133,19 @@
     <!-- Page Manager -->
     <span>
         <strong style="color:teal">Pages</strong><br>
-        Manage the sheet pages here.
+        Manage the sheet pages here.<br>
     </span><br>
+
+    <div id="i2mx-page-manager" class="section">
+        Pages: <span id="i2mx-page_mngr-page-count">0</span> |
+        <input type="submit" id="i2mx-page_mngr-add-new-page-btn" value="Add new page"><br>
+
+        <br>
+
+        <div id="i2mx-page_mngr-page-list">
+            Oops! There are no pages here yet.
+        </div>
+    </div>
 
     <br>
 

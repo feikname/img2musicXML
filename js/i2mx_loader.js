@@ -12,7 +12,8 @@ i2mx.load = function() {
     element.innerHTML = lastModification;
 
     // Load Elements
-    i2mx.ImageManager.load()
+    i2mx.ImageManager.load();
+    i2mx.PageManager.load();
 }
 
 window.addEventListener("load", i2mx.load);
