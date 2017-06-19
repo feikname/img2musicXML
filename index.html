@@ -3,6 +3,7 @@
 <head>
     <title>img2musicXML</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
     <link rel="icon" href="favicon-min.png">
     <script src="js/tingle.min.js"></script>
     <script src="js/i2mx_base.js"></script>
@@ -13,7 +14,7 @@
     <style>
         body {
             /* 1024x768 */
-            width: 1022px; /* subtract 1px border from both sides */
+            max-width: 1022px; /* subtract 1px border from both sides */
             height: auto;
             background: #efefef;
             padding: 10px;
@@ -72,6 +73,10 @@
        .i2mx-img_mngr-visualize-item-btn:active {
             color: blue;
             text-decoration: underline;
+        }
+
+        pre {
+            overflow-x: auto;
         }
     </style>
 </head>
