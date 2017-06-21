@@ -7,6 +7,9 @@
 
 window.i2mx.ImageManager = new (function() {
     this.files = [];
+    this.activeFiles = 0;
+
+    this.nextID = 0;
 
     this.event = {};
     this.event.addFiles = function() {
@@ -22,17 +25,16 @@ window.i2mx.ImageManager = new (function() {
     }
 
     this.event.removeFile = function(clickedButton) {
-        let id = clickedButton.target.getAttribute("data-id");
-        id = parseInt(id);
+        let id = parseInt(clickedButton.target.getAttribute("data-image-id"));
 
-        i2mx.ImageManager.files.splice(id, 1); // Delete image from the array
+        i2mx.ImageManager.files[id] = null; // Delete image
+        i2mx.ImageManager.activeFiles--;
 
         i2mx.ImageManager.render();
     }
 
     this.event.visualizeFile = function(clickedButton) {
-        let id = clickedButton.target.getAttribute("data-id");
-        id = parseInt(id);
+        let id = parseInt(clickedButton.target.getAttribute("data-image-id"));
 
         let fileReader = new FileReader();
         fileReader.onload = function(e) {
@@ -47,12 +49,12 @@ window.i2mx.ImageManager = new (function() {
         fileReader.readAsDataURL(i2mx.ImageManager.files[id]);
     }
 
-    this.createImgHTML = function(img, id) {
-        let newString = (id+1) + " - " + img.name +
-            " (<input type=\"submit\" data-id=\"" + id + "\" value=\"" +
+    this.createImgHTML = function(img, id, ord) {
+        let newString = (ord) + " - " + img.name +
+            " (<input type=\"submit\" data-image-id=\"" + id + "\" value=\"" +
             "Remove from list" + "\" class=\"" +
             "i2mx-img_mngr-remove-item-btn button-as-text\">)" +
-            " (<input type=\"submit\" data-id=\"" + id + "\" value=\"" +
+            " (<input type=\"submit\" data-image-id=\"" + id + "\" value=\"" +
             "View" + "\" class=\"" +
             "i2mx-img_mngr-visualize-item-btn button-as-text\">)" + "<br>";
 
@@ -63,14 +65,18 @@ window.i2mx.ImageManager = new (function() {
         let fileListEl = i2mx.Elements.imageList()
         let files = this.files;
 
-        if(files.length == 0) {
+        if(this.activeFiles == 0) {
             fileListEl.innerHTML = "Oops! There are no files here yet."
             return;
         }
 
         let newHTML = "";
-        for(var id=0, img; img=files[id]; id++) {
-            newHTML += this.createImgHTML(img, id)
+        let ord = 0;
+        for(id=0; id<files.length; id++) {
+            if(i2mx.ImageManager.files[id] !== null) {
+                let img = i2mx.ImageManager.files[id];
+                newHTML += this.createImgHTML(img, id, ++ord)
+            }
         }
 
         fileListEl.innerHTML = newHTML;
@@ -91,6 +97,7 @@ window.i2mx.ImageManager = new (function() {
     this.add = function(file) {
         if(file.type.match('image.*')) {
             this.files.push(file);
+            this.activeFiles++;
             return true;
         }
 
