@@ -50,13 +50,13 @@ window.i2mx.ImageManager = new (function() {
     }
 
     this.createImgHTML = function(img, id, ord) {
-        let newString = (ord) + " - " + img.name +
+        let newString = '<div class="i2mx-img_mngr-item">' + (ord) + " - " + img.name +
             " (<input type=\"submit\" data-image-id=\"" + id + "\" value=\"" +
             "Remove from list" + "\" class=\"" +
             "i2mx-img_mngr-remove-item-btn button-as-text\">)" +
             " (<input type=\"submit\" data-image-id=\"" + id + "\" value=\"" +
             "View" + "\" class=\"" +
-            "i2mx-img_mngr-visualize-item-btn button-as-text\">)" + "<br>";
+            "i2mx-img_mngr-visualize-item-btn button-as-text\">)" + "</div><br>";
 
         return newString;
     }

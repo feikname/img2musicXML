@@ -75,6 +75,17 @@
             text-decoration: underline;
         }
 
+        .i2mx-img_mngr-item {
+            display: inline-block;
+            width: 100%;
+            border: 1px solid transparent;
+            padding-left: 0.1em;
+        }
+        .i2mx-img_mngr-item:hover {
+            border: 1px solid #dedede;
+            background-color: #efefef;
+        }
+
         pre {
             overflow-x: auto;
         }
@@ -111,6 +122,14 @@
 
     <ul>
         <li>KEY - ACTION</li>
+        <li><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>N</kbd>: Default mode</li>
+        <li><kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>I</kbd>: Item quick edit mode
+            <ul>
+                <li>Press <kbd>d</kbd> to delete an image or page when hovering the item.</li>
+                <li>Press <kbd>v</kbd> to view an image or page when hovering the item.</li>
+            </ul>
+        </li>
+
     </ul>
 
     <!-- Image manager -->
