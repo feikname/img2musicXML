@@ -14,7 +14,7 @@ i2mx.Data = new (function() {
     this.version_minor = 0;
     this.version_patch = 0;
 
-    this.lastModification = "2017-06-18"; // YYYY-MM-DD
+    this.lastModification = "2017-07-04"; // YYYY-MM-DD
 });
 
 // @TODO: Cache system?
@@ -44,7 +44,7 @@ i2mx.Elements = new (function() {
 
     // "Page Manager"
     this.pageList = function() {
-        let id = "ix2m-page_mngr-page-list";
+        let id = "i2mx-page_mngr-page-list";
         return document.getElementById(id);
     }
 

@@ -7,6 +7,7 @@
 
 window.i2mx.PageManager = new (function() {
     this.pages = [];
+    this.activePages = 0;
 
     this.event = {};
 
@@ -15,17 +16,52 @@ window.i2mx.PageManager = new (function() {
         newPage.assignedImage = null;
 
         i2mx.PageManager.pages.push(newPage);
+        i2mx.PageManager.activePages++;
 
         i2mx.PageManager.render();
     }
-    this.event.deletePage = function(clickedButton) {
 
+    this.createPageHTML = function(id, ord) {
+        let deletePage = '<input type="submit" class="i2mx-page_mngr-remove-item-btn button-as-text" value="Remove page" data-page-id="'+id+'"></input>'
+
+        return ord + " - (id="+id+") Nothing to do here for now! ("+deletePage+")<br>"
+    }
+
+    this.event.deletePage = function(clickedButton) {
+        let id = parseInt(clickedButton.target.getAttribute("data-page-id"));
+
+        i2mx.PageManager.pages[id] = null;
+        i2mx.PageManager.activePages--;
+
+        i2mx.PageManager.render();
     }
 
     this.render = function() {
         let pageCount = i2mx.Elements.pageCount();
 
-        pageCount.innerHTML = i2mx.PageManager.pages.length;
+        pageCount.innerHTML = i2mx.PageManager.activePages;
+
+        if(i2mx.PageManager.activePages == 0) {
+            i2mx.Elements.pageList().innerHTML = "Oops! There are no pages here yet.";
+            return;
+        }
+
+        let newHTML = "";
+        let ord = 0;
+        for(var id=0; id<i2mx.PageManager.pages.length; id++) {
+            if(i2mx.PageManager.pages[id] !== null) {
+                newHTML += this.createPageHTML(id, ++ord);
+            }
+        }
+
+        i2mx.Elements.pageList().innerHTML = newHTML;
+
+        let btns;
+        btns = document.getElementsByClassName("i2mx-page_mngr-remove-item-btn");
+        for(var i=0; i<btns.length; i++) {
+            btns[i].addEventListener("click", this.event.deletePage)
+        }
+
     }
 
     this.load = function() {

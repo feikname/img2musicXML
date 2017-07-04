@@ -9,8 +9,6 @@ window.i2mx.ImageManager = new (function() {
     this.files = [];
     this.activeFiles = 0;
 
-    this.nextID = 0;
-
     this.event = {};
     this.event.addFiles = function() {
         var files = i2mx.Elements.fileInput().files;
@@ -50,7 +48,7 @@ window.i2mx.ImageManager = new (function() {
     }
 
     this.createImgHTML = function(img, id, ord) {
-        let newString = (ord) + " - " + img.name +
+        let newString = (ord) + " - (id="+id+") " + img.name +
             " (<input type=\"submit\" data-image-id=\"" + id + "\" value=\"" +
             "Remove from list" + "\" class=\"" +
             "i2mx-img_mngr-remove-item-btn button-as-text\">)" +
