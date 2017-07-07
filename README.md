@@ -17,7 +17,7 @@ This tool was made to work where automatic converters don't:
  * ~Rotate images inside the tool~ (won't be available in v0.1-Alpha)
 
 
-Altough it won't work in advanced sheets for now, it covers most basic needs.
+Although it won't work in advanced sheets for now, it covers most basic needs.
 
 More features will be added in the future.
 
