@@ -30,7 +30,32 @@ window.i2mx.PageManager = new (function() {
         pageDeleteBtn.value = "Remove page";
         pageDeleteBtn.setAttribute("data-page-id", id);
 
-        return ord + " - (id="+id+") Nothing to do here for now! ("+pageDeleteBtn.outerHTML+")<br>"
+        // Create "Assign image" button
+        let assignImgBtn = document.createElement("input");
+        assignImgBtn.type = "submit";
+        //assignImgBtn.classList.add("i2mx-page_mngr-assign-image-to-item-btn");
+        assignImgBtn.classList.add("button-as-text");
+        assignImgBtn.value = "Assign image";
+        //assignImgBtn.setAttribute("data-page-id", id);
+        assignImgBtn.style.cursor = "not-allowed"; // Temporary
+        assignImgBtn.disabled = true;              // Temporary
+
+        // Create "Open in canvas" button
+        let pageOpenBtn = document.createElement("input");
+        pageOpenBtn.type = "submit";
+        //pageOpenBtn.classList.add("i2mx-page_mngr-open-item-btn");
+        pageOpenBtn.classList.add("button-as-text");
+        pageOpenBtn.value = "Open in canvas";
+        //pageOpenBtn.setAttribute("data-page-id", id);
+        pageOpenBtn.style.cursor = "not-allowed"; // Temporary
+        pageOpenBtn.disabled = true;              // Temporary
+
+        let HTML = ord + " - (id="+id+") <b>This page has no assigned image!</b> (" +
+            pageDeleteBtn.outerHTML + ") (" + assignImgBtn.outerHTML + ") (" +
+            pageOpenBtn.outerHTML + ")<br>";
+
+        return HTML;
+
     }
 
     this.event.deletePage = function(clickedButton) {
