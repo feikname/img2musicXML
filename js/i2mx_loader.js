@@ -7,11 +7,9 @@
 
 i2mx.load = function() {
     // Show last modification date to user
-    let lastModification = i2mx.Data.lastModification;
-    let element = i2mx.Elements.lastModification();
-    element.innerHTML = lastModification;
+    i2mx.Elements.lastModification().innerHTML = i2mx.Data.lastModification;
 
-    // Load Elements
+    // Load sections
     i2mx.ImageManager.load();
     i2mx.PageManager.load();
 }

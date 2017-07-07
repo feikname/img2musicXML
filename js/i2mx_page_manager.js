@@ -22,9 +22,15 @@ window.i2mx.PageManager = new (function() {
     }
 
     this.createPageHTML = function(id, ord) {
-        let deletePage = '<input type="submit" class="i2mx-page_mngr-remove-item-btn button-as-text" value="Remove page" data-page-id="'+id+'"></input>'
+        // Create "Remove page" button
+        let pageDeleteBtn = document.createElement("input");
+        pageDeleteBtn.type = "submit";
+        pageDeleteBtn.classList.add("i2mx-page_mngr-remove-item-btn");
+        pageDeleteBtn.classList.add("button-as-text");
+        pageDeleteBtn.value = "Remove page";
+        pageDeleteBtn.setAttribute("data-page-id", id);
 
-        return ord + " - (id="+id+") Nothing to do here for now! ("+deletePage+")<br>"
+        return ord + " - (id="+id+") Nothing to do here for now! ("+pageDeleteBtn.outerHTML+")<br>"
     }
 
     this.event.deletePage = function(clickedButton) {

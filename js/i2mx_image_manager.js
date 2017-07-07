@@ -36,11 +36,13 @@ window.i2mx.ImageManager = new (function() {
 
         let fileReader = new FileReader();
         fileReader.onload = function(e) {
-            let dataUrl = e.target.result;
+            let img = document.createElement("img");
+            img.style.maxHeight = "100%";
+            img.style.maxWidth  = "100%";
+            img.src = e.target.result;
 
             let modal = new tingle.modal();
-            modal.setContent("<img style=\"max-height: 100%; max-width: 100%\" src=\"" + dataUrl + "\"></img>");
-
+            modal.setContent(img.outerHTML);
             modal.open();
         }
 
@@ -48,13 +50,25 @@ window.i2mx.ImageManager = new (function() {
     }
 
     this.createImgHTML = function(img, id, ord) {
-        let newString = (ord) + " - (id="+id+") " + img.name +
-            " (<input type=\"submit\" data-image-id=\"" + id + "\" value=\"" +
-            "Remove from list" + "\" class=\"" +
-            "i2mx-img_mngr-remove-item-btn button-as-text\">)" +
-            " (<input type=\"submit\" data-image-id=\"" + id + "\" value=\"" +
-            "View" + "\" class=\"" +
-            "i2mx-img_mngr-visualize-item-btn button-as-text\">)" + "<br>";
+        // Create "Remove from list" button
+        let imgDeleteBtn = document.createElement("input");
+        imgDeleteBtn.type = "submit";
+        imgDeleteBtn.classList.add("i2mx-img_mngr-remove-item-btn");
+        imgDeleteBtn.classList.add("button-as-text");
+        imgDeleteBtn.value = "Remove from list"
+        imgDeleteBtn.setAttribute("data-image-id", id.toString());
+
+        // Create "View" button
+        let imgViewBtn = document.createElement("input");
+        imgViewBtn.type = "submit";
+        imgViewBtn.classList.add("i2mx-img_mngr-visualize-item-btn");
+        imgViewBtn.classList.add("button-as-text");
+        imgViewBtn.value = "View"
+        imgViewBtn.setAttribute("data-image-id", id.toString());
+
+
+        let newString = (ord) + " - (id="+id+") " + img.name + " (" +
+            imgDeleteBtn.outerHTML + ") (" + imgViewBtn.outerHTML + ")<br>";
 
         return newString;
     }
