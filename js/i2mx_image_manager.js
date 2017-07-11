@@ -113,8 +113,8 @@ window.i2mx.ImageManager = new (function() {
             return true;
         }
 
-        console.log(file.name + " is not an image file!" + " (" +
-            file.type + ")");
+        // TODO: Use a "dialog" element if available
+        window.alert(file.name + " is not an image file! (MIME type: " + file.type + ")");
 
         return false;
     }
