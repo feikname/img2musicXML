@@ -6,12 +6,10 @@
     <meta name="viewport" content="width=device-width">
     <meta name="description" content="Easily transcribe sheets in image format to MusicXML">
     <link rel="icon" href="favicon-min.png">
-    <script src="js/tingle.min.js" defer></script>
     <script src="js/i2mx_base.js" defer></script>
     <script src="js/i2mx_image_manager.js" defer></script>
     <script src="js/i2mx_page_manager.js" defer></script>
     <script src="js/i2mx_loader.js" defer></script>
-    <link rel="stylesheet" href="css/tingle.min.css">
     <style>
         body {
             /* 1024x768 */
@@ -46,6 +44,25 @@
             margin-left: 0;
             margin-right: 0;
             padding: 0;
+        }
+
+        #i2mx-img_mngr-visualize-image-div {
+            display: none;
+            background-color: #dedede;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+
+        #i2mx-img_mngr-current-image {
+            display: block;
+            margin: 0 auto;
+            max-height: 7cm;
+            max-width: 100%;
+        }
+
+        #i2mx-img_mngr-hide-current-imade-btn {
+            width: 100%;
+            margin-top: 15px;
         }
 
         .i2mx-img_mngr-remove-item-btn {
@@ -138,6 +155,11 @@
     <br>
 
     <div id="i2mx-image-manager" class="section">
+        <div id="i2mx-img_mngr-visualize-image-div">
+            <img id="i2mx-img_mngr-current-image"></img>
+            <input type="submit" id="i2mx-img_mngr-hide-current-imade-btn" value="Hide"></input>
+        </div>
+
         Add file(s): <input type="file" id="i2mx-img_mngr-file-input" accept="image/*" multiple> |
         <input type="submit" id="i2mx-img_mngr-add-file-btn" value="Add"><br>
 

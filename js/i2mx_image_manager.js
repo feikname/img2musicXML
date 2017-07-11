@@ -36,17 +36,17 @@ window.i2mx.ImageManager = new (function() {
 
         let fileReader = new FileReader();
         fileReader.onload = function(e) {
-            let img = document.createElement("img");
-            img.style.maxHeight = "100%";
-            img.style.maxWidth  = "100%";
-            img.src = e.target.result;
-
-            let modal = new tingle.modal();
-            modal.setContent(img.outerHTML);
-            modal.open();
+            document.getElementById("i2mx-img_mngr-current-image").src = e.target.result;
+            document.getElementById("i2mx-img_mngr-visualize-image-div").style.display = "block";
         }
 
         fileReader.readAsDataURL(i2mx.ImageManager.files[id]);
+    }
+
+    this.event.hideImage = function(clickedButton) {
+        let id = parseInt(clickedButton.target.getAttribute("data-image-id"));
+
+        document.getElementById('i2mx-img_mngr-visualize-image-div').style.display = "none";
     }
 
     this.createImgHTML = function(img, id, ord) {
@@ -121,5 +121,6 @@ window.i2mx.ImageManager = new (function() {
 
     this.load = function() {
         i2mx.Elements.addImageBtn().addEventListener("click", this.event.addFiles)
+        i2mx.Elements.hideImageBtn().addEventListener("click", this.event.hideImage)
     };
 });

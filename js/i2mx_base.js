@@ -14,7 +14,7 @@ i2mx.Data = new (function() {
     this.version_minor = 0;
     this.version_patch = 0;
 
-    this.lastModification = "2017-07-07"; // YYYY-MM-DD
+    this.lastModification = "2017-07-11"; // YYYY-MM-DD
 });
 
 // @TODO: Cache system?
@@ -34,6 +34,11 @@ i2mx.Elements = new (function() {
 
     this.addImageBtn = function() {
         let id = "i2mx-img_mngr-add-file-btn";
+        return document.getElementById(id);
+    };
+
+    this.hideImageBtn = function() {
+        let id = "i2mx-img_mngr-hide-current-imade-btn";
         return document.getElementById(id);
     };
 
