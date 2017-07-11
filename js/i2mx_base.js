@@ -22,44 +22,44 @@ i2mx.Data = new (function() {
 i2mx.Elements = new (function() {
     // "About"
     this.lastModification = function() {
-        let id = "i2mx-ver_info-last-modification";
+        var id = "i2mx-ver_info-last-modification";
         return document.getElementById(id);
     };
 
     // "Image manager"
     this.imageList = function() {
-        let id = "i2mx-img_mngr-file-list";
+        var id = "i2mx-img_mngr-file-list";
         return document.getElementById(id);
     };
 
     this.addImageBtn = function() {
-        let id = "i2mx-img_mngr-add-file-btn";
+        var id = "i2mx-img_mngr-add-file-btn";
         return document.getElementById(id);
     };
 
     this.hideImageBtn = function() {
-        let id = "i2mx-img_mngr-hide-current-imade-btn";
+        var id = "i2mx-img_mngr-hide-current-imade-btn";
         return document.getElementById(id);
     };
 
     this.fileInput = function() {
-        let id = "i2mx-img_mngr-file-input";
+        var id = "i2mx-img_mngr-file-input";
         return document.getElementById(id);
     };
 
     // "Page Manager"
     this.pageList = function() {
-        let id = "i2mx-page_mngr-page-list";
+        var id = "i2mx-page_mngr-page-list";
         return document.getElementById(id);
     }
 
     this.pageCount = function() {
-        let id = "i2mx-page_mngr-page-count";
+        var id = "i2mx-page_mngr-page-count";
         return document.getElementById(id);
     };
 
     this.addNewPageBtn = function() {
-        let id = "i2mx-page_mngr-add-new-page-btn";
+        var id = "i2mx-page_mngr-add-new-page-btn";
         return document.getElementById(id);
     };
 });

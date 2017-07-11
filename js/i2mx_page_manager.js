@@ -12,7 +12,7 @@ window.i2mx.PageManager = new (function() {
     this.event = {};
 
     this.event.addNewPage = function() {
-        let newPage = {}
+        var newPage = {}
         newPage.assignedImage = null;
 
         i2mx.PageManager.pages.push(newPage);
@@ -23,7 +23,7 @@ window.i2mx.PageManager = new (function() {
 
     this.createPageHTML = function(id, ord) {
         // Create "Remove page" button
-        let pageDeleteBtn = document.createElement("input");
+        var pageDeleteBtn = document.createElement("input");
         pageDeleteBtn.type = "submit";
         pageDeleteBtn.classList.add("i2mx-page_mngr-remove-item-btn");
         pageDeleteBtn.classList.add("button-as-text");
@@ -31,7 +31,7 @@ window.i2mx.PageManager = new (function() {
         pageDeleteBtn.setAttribute("data-page-id", id);
 
         // Create "Assign image" button
-        let assignImgBtn = document.createElement("input");
+        var assignImgBtn = document.createElement("input");
         assignImgBtn.type = "submit";
         //assignImgBtn.classList.add("i2mx-page_mngr-assign-image-to-item-btn");
         assignImgBtn.classList.add("button-as-text");
@@ -41,7 +41,7 @@ window.i2mx.PageManager = new (function() {
         assignImgBtn.disabled = true;              // Temporary
 
         // Create "Open in canvas" button
-        let pageOpenBtn = document.createElement("input");
+        var pageOpenBtn = document.createElement("input");
         pageOpenBtn.type = "submit";
         //pageOpenBtn.classList.add("i2mx-page_mngr-open-item-btn");
         pageOpenBtn.classList.add("button-as-text");
@@ -50,7 +50,7 @@ window.i2mx.PageManager = new (function() {
         pageOpenBtn.style.cursor = "not-allowed"; // Temporary
         pageOpenBtn.disabled = true;              // Temporary
 
-        let HTML = ord + " - (id="+id+") <b>This page has no assigned image!</b> (" +
+        var HTML = ord + " - (id="+id+") <b>This page has no assigned image!</b> (" +
             pageDeleteBtn.outerHTML + ") (" + assignImgBtn.outerHTML + ") (" +
             pageOpenBtn.outerHTML + ")<br>";
 
@@ -59,7 +59,7 @@ window.i2mx.PageManager = new (function() {
     }
 
     this.event.deletePage = function(clickedButton) {
-        let id = parseInt(clickedButton.target.getAttribute("data-page-id"));
+        var id = parseInt(clickedButton.target.getAttribute("data-page-id"));
 
         i2mx.PageManager.pages[id] = null;
         i2mx.PageManager.activePages--;
@@ -68,7 +68,7 @@ window.i2mx.PageManager = new (function() {
     }
 
     this.render = function() {
-        let pageCount = i2mx.Elements.pageCount();
+        var pageCount = i2mx.Elements.pageCount();
 
         pageCount.innerHTML = i2mx.PageManager.activePages;
 
@@ -77,8 +77,8 @@ window.i2mx.PageManager = new (function() {
             return;
         }
 
-        let newHTML = "";
-        let ord = 0;
+        var newHTML = "";
+        var ord = 0;
         for(var id=0; id<i2mx.PageManager.pages.length; id++) {
             if(i2mx.PageManager.pages[id] !== null) {
                 newHTML += this.createPageHTML(id, ++ord);
@@ -87,7 +87,7 @@ window.i2mx.PageManager = new (function() {
 
         i2mx.Elements.pageList().innerHTML = newHTML;
 
-        let btns;
+        var btns;
         btns = document.getElementsByClassName("i2mx-page_mngr-remove-item-btn");
         for(var i=0; i<btns.length; i++) {
             btns[i].addEventListener("click", this.event.deletePage)
