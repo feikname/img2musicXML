@@ -9,6 +9,7 @@
     <script src="js/i2mx_base.js" defer></script>
     <script src="js/i2mx_image_manager.js" defer></script>
     <script src="js/i2mx_page_manager.js" defer></script>
+    <script src="js/i2mx_drawing_canvas.js" defer></script>
     <script src="js/i2mx_loader.js" defer></script>
     <style>
         body {
@@ -107,6 +108,18 @@
             text-decoration: underline;
         }
 
+        #i2mx-canvas {
+            display: block;
+            border: 2px solid black;
+            background-color: white;
+            padding: 0;
+            margin: 0;
+            width: 300px;
+            height: 300px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         pre {
             overflow-x: auto;
         }
@@ -156,8 +169,8 @@
 
     <div id="i2mx-image-manager" class="section">
         <div id="i2mx-img_mngr-visualize-image-div">
-            <img id="i2mx-img_mngr-current-image"></img>
-            <input type="submit" id="i2mx-img_mngr-hide-current-imade-btn" value="Hide"></input>
+            <img id="i2mx-img_mngr-current-image">
+            <input type="submit" id="i2mx-img_mngr-hide-current-imade-btn" value="Hide">
         </div>
 
         Add file(s): <input type="file" id="i2mx-img_mngr-file-input" accept="image/*" multiple> |
@@ -194,8 +207,14 @@
     <!-- Canvas -->
     <span>
         <strong style="color:black">Canvas</strong><br>
-        This is the drawing canvas: (size width x height)
+        Draw over your currently opened page here.
     </span><br>
+
+    <br>
+
+    <canvas id="i2mx-canvas" width="300" height="300">
+        It seems your browser does not support the canvas element.
+    </canvas>
 
     <br>
 

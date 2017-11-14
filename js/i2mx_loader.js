@@ -12,6 +12,7 @@ i2mx.load = function() {
     // Load sections
     i2mx.ImageManager.load();
     i2mx.PageManager.load();
+    i2mx.DrawingCanvas.load();
 }
 
 window.addEventListener("load", i2mx.load);
