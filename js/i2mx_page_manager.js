@@ -26,6 +26,7 @@ window.i2mx.PageManager = new (function() {
         var pageDeleteBtn = document.createElement("input");
         pageDeleteBtn.type = "submit";
         pageDeleteBtn.classList.add("i2mx-page_mngr-remove-item-btn");
+        pageDeleteBtn.classList.add("red-btn");
         pageDeleteBtn.classList.add("button-as-text");
         pageDeleteBtn.value = "Remove page";
         pageDeleteBtn.setAttribute("data-page-id", id);
@@ -34,6 +35,7 @@ window.i2mx.PageManager = new (function() {
         var assignImgBtn = document.createElement("input");
         assignImgBtn.type = "submit";
         assignImgBtn.classList.add("i2mx-page_mngr-assign-image-to-item-btn");
+        assignImgBtn.classList.add("blue-btn");
         assignImgBtn.classList.add("button-as-text");
         assignImgBtn.value = "Assign image";
         assignImgBtn.setAttribute("data-page-id", id);
@@ -42,6 +44,7 @@ window.i2mx.PageManager = new (function() {
         var deassignImgBtn = document.createElement("input");
         deassignImgBtn.type = "submit";
         deassignImgBtn.classList.add("i2mx-page_mngr-deassign-image-btn");
+        deassignImgBtn.classList.add("red-btn");
         deassignImgBtn.classList.add("button-as-text");
         deassignImgBtn.value = "Deassign image";
         deassignImgBtn.setAttribute("data-page-id", id);
@@ -50,6 +53,7 @@ window.i2mx.PageManager = new (function() {
         var pageOpenBtn = document.createElement("input");
         pageOpenBtn.type = "submit";
         //pageOpenBtn.classList.add("i2mx-page_mngr-open-item-btn");
+        pageOpenBtn.classList.add("blue-btn");
         pageOpenBtn.classList.add("button-as-text");
         pageOpenBtn.value = "Open in canvas";
         //pageOpenBtn.setAttribute("data-page-id", id);
