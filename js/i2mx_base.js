@@ -38,7 +38,7 @@ i2mx.Elements = new (function() {
     };
 
     this.hideImageBtn = function() {
-        var id = "i2mx-img_mngr-hide-current-imade-btn";
+        var id = "i2mx-img_mngr-hide-current-image-btn";
         return document.getElementById(id);
     };
 
