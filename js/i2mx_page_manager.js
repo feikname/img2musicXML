@@ -127,7 +127,8 @@ window.i2mx.PageManager = new (function() {
         }
 
         for(var id=0; id<i2mx.PageManager.pages.length; id++) {
-            if(i2mx.PageManager.pages[id].assignedImage == img_id) {
+            if(i2mx.PageManager.pages[id] !== undefined
+            && i2mx.PageManager.pages[id].assignedImage == img_id) {
                 pagesThatContainTheImage.push(id);
             }
         }
