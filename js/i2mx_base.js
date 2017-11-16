@@ -68,4 +68,8 @@ i2mx.Elements = new (function() {
         var id = "i2mx-canvas";
         return document.getElementById(id);
     }
+    this.closeCurrentPageBtn = function() {
+        var id = "i2mx-canvas-close-current-page-btn";
+        return document.getElementById(id);
+    }
 });

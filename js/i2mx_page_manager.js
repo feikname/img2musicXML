@@ -52,19 +52,26 @@ window.i2mx.PageManager = new (function() {
         // Create "Open in canvas" button
         var pageOpenBtn = document.createElement("input");
         pageOpenBtn.type = "submit";
-        //pageOpenBtn.classList.add("i2mx-page_mngr-open-item-btn");
+        pageOpenBtn.classList.add("i2mx-page_mngr-open-item-btn");
         pageOpenBtn.classList.add("blue-btn");
         pageOpenBtn.classList.add("button-as-text");
         pageOpenBtn.value = "Open in canvas";
-        //pageOpenBtn.setAttribute("data-page-id", id);
-        pageOpenBtn.style.cursor = "not-allowed"; // Temporary
-        pageOpenBtn.disabled = true;              // Temporary
+        pageOpenBtn.setAttribute("data-page-id", id);
+
+        // Create disabled "Open in canvas" button
+        var disabledPageOpenBtn = document.createElement("input");
+        disabledPageOpenBtn.type = "submit";
+        disabledPageOpenBtn.classList.add("red-btn");
+        disabledPageOpenBtn.classList.add("button-as-text");
+        disabledPageOpenBtn.value = "Open in canvas";
+        disabledPageOpenBtn.style.cursor = "not-allowed";
+        disabledPageOpenBtn.disabled = true;
 
         var img_id = this.pages[id].assignedImage;
         if(img_id == null) {
             var HTML = ord + " - (id="+id+") <b>This page has no assigned image!</b> (" +
                 pageDeleteBtn.outerHTML + ") (" + assignImgBtn.outerHTML + ") (" +
-                pageOpenBtn.outerHTML + ")<br>";
+                disabledPageOpenBtn.outerHTML + ")<br>";
         } else {
             var HTML = ord + " - (id="+id+") Assigned to image of id <b>"+img_id+".</b> (" +
                 pageDeleteBtn.outerHTML + ") (" + deassignImgBtn.outerHTML + ") (" +
@@ -119,6 +126,13 @@ window.i2mx.PageManager = new (function() {
         i2mx.PageManager.render();
     }
 
+    this.event.openPageInCanvas = function(clickedButton) {
+         var page_id = parseInt(clickedButton.target.getAttribute("data-page-id"));
+         //alert("trying");
+         i2mx.DrawingCanvas.openPage(page_id);
+         //alert("opened");
+    }
+
     this.hasImageAssignedInPages = function(img_id) {
         var pagesThatContainTheImage = [];
 
@@ -171,6 +185,11 @@ window.i2mx.PageManager = new (function() {
         btns = document.getElementsByClassName("i2mx-page_mngr-deassign-image-btn");
         for(var i=0; i<btns.length; i++) {
             btns[i].addEventListener("click", this.event.deassignImageFromPage)
+        }
+
+        btns = document.getElementsByClassName("i2mx-page_mngr-open-item-btn");
+        for(var i=0; i<btns.length; i++) {
+            btns[i].addEventListener("click", this.event.openPageInCanvas)
         }
     }
 

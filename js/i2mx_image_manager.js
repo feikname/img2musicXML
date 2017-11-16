@@ -143,7 +143,7 @@ window.i2mx.ImageManager = new (function() {
     }
 
     this.load = function() {
-        i2mx.Elements.addImageBtn().addEventListener("click", this.event.addFiles)
-        i2mx.Elements.hideImageBtn().addEventListener("click", this.event.hideImage)
-    };
+        i2mx.Elements.addImageBtn().addEventListener("click", this.event.addFiles);
+        i2mx.Elements.hideImageBtn().addEventListener("click", this.event.hideImage);
+    }
 });
