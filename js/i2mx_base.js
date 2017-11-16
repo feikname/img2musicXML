@@ -14,7 +14,7 @@ i2mx.Data = new (function() {
     this.version_minor = 0;
     this.version_patch = 0;
 
-    this.lastModification = "2017-11-15"; // YYYY-MM-DD
+    this.lastModification = "2017-11-16"; // YYYY-MM-DD
 });
 
 // @TODO: Cache system?

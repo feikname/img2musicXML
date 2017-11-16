@@ -29,6 +29,18 @@ window.i2mx.ImageManager = new (function() {
         i2mx.ImageManager.activeFiles--;
 
         i2mx.ImageManager.render();
+
+        // Deassign the image from pages that assigned it
+        var pagesThatContainTheImage = i2mx.PageManager.hasImageAssignedInPages(id);
+
+        if(pagesThatContainTheImage.length > 0) {
+            for(var i=0; i<pagesThatContainTheImage.length; i++) {
+                page_id = pagesThatContainTheImage[i];
+                i2mx.PageManager.pages[page_id].assignedImage = null;
+            }
+        }
+
+        i2mx.PageManager.render();
     }
 
     this.event.visualizeFile = function(clickedButton) {
@@ -47,6 +59,15 @@ window.i2mx.ImageManager = new (function() {
         var id = parseInt(clickedButton.target.getAttribute("data-image-id"));
 
         document.getElementById('i2mx-img_mngr-visualize-image-div').style.display = "none";
+    }
+
+    this.has = function(img_id) {
+        if(this.files[img_id] == undefined ||
+           this.files[img_id] == null) {
+            return false;
+        }
+
+        return true;
     }
 
     this.createImgHTML = function(img, id, ord) {
