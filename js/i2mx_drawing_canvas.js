@@ -12,12 +12,7 @@ window.i2mx.DrawingCanvas = new (function() {
 
     this.event = {};
     this.event.closeCurrentPage = function() {
-       i2mx.DrawingCanvas.currentPageId = null;
-       i2mx.DrawingCanvas.currentImgObj = null;
-
-       i2mx.DrawingCanvas.render();
-
-       i2mx.Elements.closeCurrentPageBtn().style.display = "none";
+       i2mx.DrawingCanvas.closeCurrentPage();
     }
 
     this.render = function() {
@@ -43,6 +38,15 @@ window.i2mx.DrawingCanvas = new (function() {
 
         var img_obj = i2mx.DrawingCanvas.currentImgObj;
         i2mx.DrawingCanvas.ctx.drawImage(img_obj, 0, 0, canvas_el.offsetWidth, canvas_el.offsetHeight);
+    }
+
+    this.closeCurrentPage = function() {
+        i2mx.DrawingCanvas.currentPageId = null;
+        i2mx.DrawingCanvas.currentImgObj = null;
+
+        i2mx.DrawingCanvas.render();
+
+        i2mx.Elements.closeCurrentPageBtn().style.display = "none";
     }
 
     this.openPage = function(page_id) {

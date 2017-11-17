@@ -33,14 +33,20 @@ window.i2mx.ImageManager = new (function() {
         // Deassign the image from pages that assigned it
         var pagesThatContainTheImage = i2mx.PageManager.hasImageAssignedInPages(id);
 
-        if(pagesThatContainTheImage.length > 0) {
-            for(var i=0; i<pagesThatContainTheImage.length; i++) {
-                page_id = pagesThatContainTheImage[i];
-                i2mx.PageManager.pages[page_id].assignedImage = null;
-            }
+        for(var i=0; i<pagesThatContainTheImage.length; i++) {
+            page_id = pagesThatContainTheImage[i];
+            i2mx.PageManager.pages[page_id].assignedImage = null;
         }
 
         i2mx.PageManager.render();
+
+        // If the currently opened page contained the image, close it.
+        for(var i=0; i<pagesThatContainTheImage.length; i++) {
+             page_id = pagesThatContainTheImage[i];
+             if(i2mx.DrawingCanvas.currentPageId == page_id) {
+                 i2mx.DrawingCanvas.closeCurrentPage();
+             }
+        }
     }
 
     this.event.visualizeFile = function(clickedButton) {
