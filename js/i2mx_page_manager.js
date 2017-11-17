@@ -58,20 +58,10 @@ window.i2mx.PageManager = new (function() {
         pageOpenBtn.value = "Open in canvas";
         pageOpenBtn.setAttribute("data-page-id", id);
 
-        // Create disabled "Open in canvas" button
-        var disabledPageOpenBtn = document.createElement("input");
-        disabledPageOpenBtn.type = "submit";
-        disabledPageOpenBtn.classList.add("red-btn");
-        disabledPageOpenBtn.classList.add("button-as-text");
-        disabledPageOpenBtn.value = "Open in canvas";
-        disabledPageOpenBtn.style.cursor = "not-allowed";
-        disabledPageOpenBtn.disabled = true;
-
         var img_id = this.pages[id].assignedImage;
         if(img_id == null) {
-            var HTML = ord + " - (id="+id+") <b>This page has no assigned image!</b> (" +
-                pageDeleteBtn.outerHTML + ") (" + assignImgBtn.outerHTML + ") (" +
-                disabledPageOpenBtn.outerHTML + ")<br>";
+            var HTML = ord + " - (id="+id+") <b>Assign an image to this page to open it in the canvas!</b> (" +
+                pageDeleteBtn.outerHTML + ") (" + assignImgBtn.outerHTML + ")<br>";
         } else {
             var HTML = ord + " - (id="+id+") Assigned to image of id <b>"+img_id+".</b> (" +
                 pageDeleteBtn.outerHTML + ") (" + deassignImgBtn.outerHTML + ") (" +
@@ -79,7 +69,6 @@ window.i2mx.PageManager = new (function() {
         }
 
         return HTML;
-
     }
 
     this.event.deletePage = function(clickedButton) {
