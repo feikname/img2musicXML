@@ -35,7 +35,6 @@ window.i2mx.DrawingCanvas = new (function() {
             return;
         }
 
-
         var img_obj = i2mx.DrawingCanvas.currentImgObj;
         i2mx.DrawingCanvas.ctx.drawImage(img_obj, 0, 0, canvas_el.offsetWidth, canvas_el.offsetHeight);
     }
@@ -47,6 +46,7 @@ window.i2mx.DrawingCanvas = new (function() {
         i2mx.DrawingCanvas.render();
 
         i2mx.Elements.closeCurrentPageBtn().style.display = "none";
+        i2mx.Elements.canvasImageSettings().style.display = "none";
     }
 
     this.openPage = function(page_id) {
@@ -88,6 +88,7 @@ window.i2mx.DrawingCanvas = new (function() {
         fileReader.readAsDataURL(i2mx.ImageManager.files[img_id]);
 
         i2mx.Elements.closeCurrentPageBtn().style.display = "block";
+        i2mx.Elements.canvasImageSettings().style.display = "block";
     }
 
     this.load = function() {

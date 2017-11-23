@@ -117,9 +117,7 @@ window.i2mx.PageManager = new (function() {
 
     this.event.openPageInCanvas = function(clickedButton) {
          var page_id = parseInt(clickedButton.target.getAttribute("data-page-id"));
-         //alert("trying");
          i2mx.DrawingCanvas.openPage(page_id);
-         //alert("opened");
     }
 
     this.hasImageAssignedInPages = function(img_id) {
