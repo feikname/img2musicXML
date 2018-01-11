@@ -7,12 +7,12 @@
 
 i2mx.load = function() {
     // Show last modification date to user
-    i2mx.Elements.lastModification().innerHTML = i2mx.Data.lastModification;
+    i2mx.Elements.lastModification().innerHTML = i2mx.Data.lastModification
 
     // Load sections
-    i2mx.ImageManager.load();
-    i2mx.PageManager.load();
-    i2mx.DrawingCanvas.load();
+    i2mx.ImageManager.load()
+    i2mx.PageManager.load()
+    i2mx.DrawingCanvas.load()
 }
 
-window.addEventListener("load", i2mx.load);
+window.addEventListener("load", i2mx.load)
