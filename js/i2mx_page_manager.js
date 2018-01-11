@@ -83,7 +83,7 @@ window.i2mx.PageManager = new (function() {
     this.event.assignImageToPage = function(clickedButton) {
         var id = parseInt(clickedButton.target.getAttribute("data-page-id"))
 
-        img_id = prompt("Please enter the desired image id", "")
+        img_id = prompt("Please enter the id of the image you added in Image Manager", "")
 
         // No input
         if(img_id === null || img_id === "") {
