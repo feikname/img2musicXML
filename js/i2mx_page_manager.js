@@ -127,7 +127,7 @@ window.i2mx.PageManager = new (function() {
             return pagesThatContainTheImage
         }
 
-        for(var id=0 id<i2mx.PageManager.pages.length id++) {
+        for(var id=0; id<i2mx.PageManager.pages.length; id++) {
             if(i2mx.PageManager.pages[id] !== undefined
             && i2mx.PageManager.pages[id].assignedImage == img_id) {
                 pagesThatContainTheImage.push(id)
@@ -149,7 +149,7 @@ window.i2mx.PageManager = new (function() {
 
         var newHTML = ""
         var ord = 0
-        for(var id=0 id<i2mx.PageManager.pages.length id++) {
+        for(var id=0; id<i2mx.PageManager.pages.length; id++) {
             if(i2mx.PageManager.pages[id] !== null) {
                 newHTML += this.createPageHTML(id, ++ord)
             }
@@ -160,22 +160,22 @@ window.i2mx.PageManager = new (function() {
         var btns
 
         btns = document.getElementsByClassName("i2mx-page_mngr-remove-item-btn")
-        for(var i=0 i<btns.length i++) {
+        for(var i=0; i<btns.length; i++) {
             btns[i].addEventListener("click", this.event.deletePage)
         }
 
         btns = document.getElementsByClassName("i2mx-page_mngr-assign-image-to-item-btn")
-        for(var i=0 i<btns.length i++) {
+        for(var i=0; i<btns.length; i++) {
             btns[i].addEventListener("click", this.event.assignImageToPage)
         }
 
         btns = document.getElementsByClassName("i2mx-page_mngr-deassign-image-btn")
-        for(var i=0 i<btns.length i++) {
+        for(var i=0; i<btns.length; i++) {
             btns[i].addEventListener("click", this.event.deassignImageFromPage)
         }
 
         btns = document.getElementsByClassName("i2mx-page_mngr-open-item-btn")
-        for(var i=0 i<btns.length i++) {
+        for(var i=0; i<btns.length; i++) {
             btns[i].addEventListener("click", this.event.openPageInCanvas)
         }
     }

@@ -6,150 +6,150 @@
 */
 
 window.i2mx.ImageManager = new (function() {
-    this.files = [];
-    this.activeFiles = 0;
+    this.files = []
+    this.activeFiles = 0
 
-    this.event = {};
+    this.event = {}
     this.event.addFiles = function() {
-        var files = i2mx.Elements.fileInput().files;
+        var files = i2mx.Elements.fileInput().files
 
         for(var i=0; i<files.length; i++) {
-            i2mx.ImageManager.add(files[i]);
+            i2mx.ImageManager.add(files[i])
         }
 
-        i2mx.ImageManager.render();
+        i2mx.ImageManager.render()
 
-        i2mx.Elements.fileInput().value = ""; // Reset
+        i2mx.Elements.fileInput().value = "" // Reset
     }
 
     this.event.removeFile = function(clickedButton) {
-        var id = parseInt(clickedButton.target.getAttribute("data-image-id"));
+        var id = parseInt(clickedButton.target.getAttribute("data-image-id"))
 
-        i2mx.ImageManager.files[id] = null; // Delete image
-        i2mx.ImageManager.activeFiles--;
+        i2mx.ImageManager.files[id] = null // Delete image
+        i2mx.ImageManager.activeFiles--
 
-        i2mx.ImageManager.render();
+        i2mx.ImageManager.render()
 
         // Deassign the image from pages that assigned it
-        var pagesThatContainTheImage = i2mx.PageManager.hasImageAssignedInPages(id);
+        var pagesThatContainTheImage = i2mx.PageManager.hasImageAssignedInPages(id)
 
         for(var i=0; i<pagesThatContainTheImage.length; i++) {
-            page_id = pagesThatContainTheImage[i];
-            i2mx.PageManager.pages[page_id].assignedImage = null;
+            page_id = pagesThatContainTheImage[i]
+            i2mx.PageManager.pages[page_id].assignedImage = null
         }
 
-        i2mx.PageManager.render();
+        i2mx.PageManager.render()
 
         // If the currently opened page contained the image, close it.
         for(var i=0; i<pagesThatContainTheImage.length; i++) {
-             page_id = pagesThatContainTheImage[i];
+             page_id = pagesThatContainTheImage[i]
              if(i2mx.DrawingCanvas.currentPageId == page_id) {
-                 i2mx.DrawingCanvas.closeCurrentPage();
+                 i2mx.DrawingCanvas.closeCurrentPage()
              }
         }
     }
 
     this.event.visualizeFile = function(clickedButton) {
-        var id = parseInt(clickedButton.target.getAttribute("data-image-id"));
+        var id = parseInt(clickedButton.target.getAttribute("data-image-id"))
 
-        var fileReader = new FileReader();
+        var fileReader = new FileReader()
         fileReader.onload = function(e) {
-            document.getElementById("i2mx-img_mngr-current-image").src = e.target.result;
-            document.getElementById("i2mx-img_mngr-visualize-image-div").style.display = "block";
+            document.getElementById("i2mx-img_mngr-current-image").src = e.target.result
+            document.getElementById("i2mx-img_mngr-visualize-image-div").style.display = "block"
         }
 
-        fileReader.readAsDataURL(i2mx.ImageManager.files[id]);
+        fileReader.readAsDataURL(i2mx.ImageManager.files[id])
     }
 
     this.event.hideImage = function(clickedButton) {
-        var id = parseInt(clickedButton.target.getAttribute("data-image-id"));
+        var id = parseInt(clickedButton.target.getAttribute("data-image-id"))
 
-        document.getElementById('i2mx-img_mngr-visualize-image-div').style.display = "none";
+        document.getElementById('i2mx-img_mngr-visualize-image-div').style.display = "none"
     }
 
     this.has = function(img_id) {
         if(this.files[img_id] == undefined ||
            this.files[img_id] == null) {
-            return false;
+            return false
         }
 
-        return true;
+        return true
     }
 
     this.createImgHTML = function(img, id, ord) {
         // Create "Remove from list" button
-        var imgDeleteBtn = document.createElement("input");
-        imgDeleteBtn.type = "submit";
-        imgDeleteBtn.classList.add("i2mx-img_mngr-remove-item-btn");
-        imgDeleteBtn.classList.add("red-btn");
-        imgDeleteBtn.classList.add("button-as-text");
+        var imgDeleteBtn = document.createElement("input")
+        imgDeleteBtn.type = "submit"
+        imgDeleteBtn.classList.add("i2mx-img_mngr-remove-item-btn")
+        imgDeleteBtn.classList.add("red-btn")
+        imgDeleteBtn.classList.add("button-as-text")
         imgDeleteBtn.value = "Remove from list"
-        imgDeleteBtn.setAttribute("data-image-id", id.toString());
+        imgDeleteBtn.setAttribute("data-image-id", id.toString())
 
         // Create "View" button
-        var imgViewBtn = document.createElement("input");
-        imgViewBtn.type = "submit";
-        imgViewBtn.classList.add("i2mx-img_mngr-visualize-item-btn");
-        imgViewBtn.classList.add("blue-btn");
-        imgViewBtn.classList.add("button-as-text");
+        var imgViewBtn = document.createElement("input")
+        imgViewBtn.type = "submit"
+        imgViewBtn.classList.add("i2mx-img_mngr-visualize-item-btn")
+        imgViewBtn.classList.add("blue-btn")
+        imgViewBtn.classList.add("button-as-text")
         imgViewBtn.value = "View"
-        imgViewBtn.setAttribute("data-image-id", id.toString());
+        imgViewBtn.setAttribute("data-image-id", id.toString())
 
 
         var newString = (ord) + " - (id="+id+") " + img.name + " (" +
-            imgDeleteBtn.outerHTML + ") (" + imgViewBtn.outerHTML + ")<br>";
+            imgDeleteBtn.outerHTML + ") (" + imgViewBtn.outerHTML + ")<br>"
 
-        return newString;
+        return newString
     }
 
     this.render = function() {
         var fileListEl = i2mx.Elements.imageList()
-        var files = this.files;
+        var files = this.files
 
         if(this.activeFiles == 0) {
             fileListEl.innerHTML = "Oops! There are no files here yet."
-            return;
+            return
         }
 
-        var newHTML = "";
-        var ord = 0;
+        var newHTML = ""
+        var ord = 0
         for(id=0; id<files.length; id++) {
             if(i2mx.ImageManager.files[id] !== null) {
-                var img = i2mx.ImageManager.files[id];
+                var img = i2mx.ImageManager.files[id]
                 newHTML += this.createImgHTML(img, id, ++ord)
             }
         }
 
-        fileListEl.innerHTML = newHTML;
+        fileListEl.innerHTML = newHTML
 
-        var btns;
+        var btns
 
-        btns = document.getElementsByClassName("i2mx-img_mngr-remove-item-btn");
+        btns = document.getElementsByClassName("i2mx-img_mngr-remove-item-btn")
         for(var id=0, btn; btn=btns[id]; id++) {
-            btn.addEventListener("click", this.event.removeFile);
+            btn.addEventListener("click", this.event.removeFile)
         }
 
-        btns = document.getElementsByClassName("i2mx-img_mngr-visualize-item-btn");
+        btns = document.getElementsByClassName("i2mx-img_mngr-visualize-item-btn")
         for(var id=0, btn; btn=btns[id]; id++) {
-            btn.addEventListener("click", this.event.visualizeFile);
+            btn.addEventListener("click", this.event.visualizeFile)
         }
     }
 
     this.add = function(file) {
         if(file.type.match('image.*')) {
-            this.files.push(file);
-            this.activeFiles++;
-            return true;
+            this.files.push(file)
+            this.activeFiles++
+            return true
         }
 
         // TODO: Use a "dialog" element if available
-        window.alert(file.name + " is not an image file! (MIME type: " + file.type + ")");
+        window.alert(file.name + " is not an image file! (MIME type: " + file.type + ")")
 
-        return false;
+        return false
     }
 
     this.load = function() {
-        i2mx.Elements.addImageBtn().addEventListener("click", this.event.addFiles);
-        i2mx.Elements.hideImageBtn().addEventListener("click", this.event.hideImage);
+        i2mx.Elements.addImageBtn().addEventListener("click", this.event.addFiles)
+        i2mx.Elements.hideImageBtn().addEventListener("click", this.event.hideImage)
     }
-});
+})
