@@ -34,7 +34,7 @@ input[type="submit"] {
 }
 
 #i2mx-img_mngr-visualize-image-div {
-    display: none;
+    display: none; /* hidden until an image is visualized */
     background-color: #dedede;
     margin-bottom: 10px;
     padding: 10px;
@@ -94,11 +94,11 @@ input[type="submit"] {
 #i2mx-canvas-close-current-page-btn {
     width: 100%;
     margin-top: 5px;
-    display: none;
+    display: none; /* hidden until a page is opened */
 }
 
 #i2mx-canvas-image-settings {
-    display: none;
+    display: none; /* hidden until a page is opened */
     background-color: #dedede;
     border: 1px solid #c2c2c2;
     margin-bottom: 10px;
