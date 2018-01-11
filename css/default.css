@@ -1,0 +1,110 @@
+body {
+    /* 1024x768 */
+    max-width: 1022px; /* subtract 1px border from both sides */
+    height: auto;
+    background: #efefef;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid black;
+}
+
+html {
+    background: white;
+}
+
+.section {
+    background: white;
+    border: 2px solid black;
+    margin: 0;
+    padding: 5px;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+}
+
+.button-as-text {
+    text-decoration: none;
+    border: none;
+    background: transparent;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 0;
+}
+
+#i2mx-img_mngr-visualize-image-div {
+    display: none;
+    background-color: #dedede;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+#i2mx-img_mngr-current-image {
+    display: block;
+    margin: 0 auto;
+    max-height: 7cm;
+    max-width: 100%;
+}
+
+#i2mx-img_mngr-hide-current-image-btn {
+    width: 100%;
+    margin-top: 15px;
+}
+
+.red-btn {
+    color: darkred;
+}
+
+.red-btn:hover {
+    color: darkred;
+    text-decoration: underline;
+}
+
+.red-btn:active {
+    color: red;
+    text-decoration: underline;
+}
+
+.blue-btn {
+    color: royalblue;
+}
+
+.blue-btn:hover {
+    color: royalblue;
+    text-decoration: underline;
+}
+
+.blue-btn:active {
+    color: blue;
+    text-decoration: underline;
+}
+
+#i2mx-canvas {
+    display: block;
+    margin: 0 auto;
+    max-height: 10cm;
+    max-width: 100%;
+    border: 2px solid black;
+    background-color: white;
+    width: 300px;
+    height: 300px;
+}
+
+#i2mx-canvas-close-current-page-btn {
+    width: 100%;
+    margin-top: 5px;
+    display: none;
+}
+
+#i2mx-canvas-image-settings {
+    display: none;
+    background-color: #dedede;
+    border: 1px solid #c2c2c2;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+pre {
+    overflow-x: auto;
+}
