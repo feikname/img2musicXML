@@ -32,13 +32,12 @@ window.i2mx.PageManager = new (function() {
         pageDeleteBtn.setAttribute("data-page-id", id)
 
         // Create "Assign image" button
-        var assignImgBtn = document.createElement("input")
-        assignImgBtn.type = "button"
-        assignImgBtn.classList.add("i2mx-page_mngr-assign-image-to-item-btn")
+        var assignImgBtn = document.createElement("label")
         assignImgBtn.classList.add("blue-btn")
         assignImgBtn.classList.add("button-as-anchor")
-        assignImgBtn.value = "Assign image"
+        assignImgBtn.setAttribute("for", "i2mx-page_mngr-assign-image-to-item-input")
         assignImgBtn.setAttribute("data-page-id", id)
+        assignImgBtn.innerText = "Assign an image"
 
         // Create "Deassign image" button
         var deassignImgBtn = document.createElement("input")
@@ -58,12 +57,12 @@ window.i2mx.PageManager = new (function() {
         pageOpenBtn.value = "Open in canvas"
         pageOpenBtn.setAttribute("data-page-id", id)
 
-        var img_id = this.pages[id].assignedImage
-        if(img_id == null) {
+        var img = this.pages[id].assignedImage
+        if(img == null) {
             var HTML = ord + " - (id="+id+") <b>Assign an image to this page to open it in the canvas!</b> (" +
                 pageDeleteBtn.outerHTML + ") (" + assignImgBtn.outerHTML + ")<br>"
         } else {
-            var HTML = ord + " - (id="+id+") Assigned to image of id <b>"+img_id+".</b> (" +
+            var HTML = ord + " - (id="+id+") <pre class=i2mx-page_mngr-file-name>" + img.name + "</pre>  (" +
                 pageDeleteBtn.outerHTML + ") (" + deassignImgBtn.outerHTML + ") (" +
                 pageOpenBtn.outerHTML + ")<br>"
         }
@@ -80,37 +79,41 @@ window.i2mx.PageManager = new (function() {
         i2mx.PageManager.render()
     }
 
-    this.event.assignImageToPage = function(clickedButton) {
-        var id = parseInt(clickedButton.target.getAttribute("data-page-id"))
-
-        img_id = prompt("Please enter the id of the image you added in Image Manager", "")
-
-        // No input
-        if(img_id === null || img_id === "") {
+    this.event.assignImageToPage = function(evt) {
+        if(evt.type == "click") {
+            var page_id = parseInt(evt.explicitOriginalTarget.parentElement.getAttribute("data-page-id"))
+            this.setAttribute("data-page-id", page_id)
             return
         }
 
-        // Invalid ID (NaN)
-        img_id = parseInt(img_id)
-        if(isNaN(img_id)) {
-            alert("Invalid ID! Please check again. (NaN)")
+        var page_id = this.getAttribute("data-page-id")
+
+        var file = this.files[0]
+        if(file.type.match('image.*')) {
+            i2mx.PageManager.pages[page_id].assignedImage = file
+            i2mx.PageManager.render()
+
+            // If the currently opened page contained the image, close it.
+            // TODO: Change this to redraw canvas with the newly added image
+            if(i2mx.DrawingCanvas.currentPageId == page_id) {
+                i2mx.DrawingCanvas.closeCurrentPage()
+            }
             return
         }
 
-        // Invalid ID (image with selected ID does not exist)
-        if(!window.i2mx.ImageManager.has(img_id)) {
-            alert("Invalid ID! Please check again. (NEI)")
-            return
-        }
-
-        i2mx.PageManager.pages[id].assignedImage = img_id
-        i2mx.PageManager.render()
+        alert("You tried to use a non-image file!")
     }
 
     this.event.deassignImageFromPage = function(clickedButton) {
         var page_id = parseInt(clickedButton.target.getAttribute("data-page-id"))
 
         i2mx.PageManager.pages[page_id].assignedImage = null
+
+        // If the currently opened page contained the image, close it.
+        // TODO: Change this to redraw canvas without the image
+        if(i2mx.DrawingCanvas.currentPageId == page_id) {
+            i2mx.DrawingCanvas.closeCurrentPage()
+        }
 
         i2mx.PageManager.render()
     }
@@ -164,11 +167,6 @@ window.i2mx.PageManager = new (function() {
             btns[i].addEventListener("click", this.event.deletePage)
         }
 
-        btns = document.getElementsByClassName("i2mx-page_mngr-assign-image-to-item-btn")
-        for(var i=0; i<btns.length; i++) {
-            btns[i].addEventListener("click", this.event.assignImageToPage)
-        }
-
         btns = document.getElementsByClassName("i2mx-page_mngr-deassign-image-btn")
         for(var i=0; i<btns.length; i++) {
             btns[i].addEventListener("click", this.event.deassignImageFromPage)
@@ -182,5 +180,7 @@ window.i2mx.PageManager = new (function() {
 
     this.load = function() {
         i2mx.Elements.addNewPageBtn().addEventListener("click", this.event.addNewPage)
+        i2mx.Elements.imgInput().addEventListener("click", this.event.assignImageToPage)
+        i2mx.Elements.imgInput().addEventListener("change", this.event.assignImageToPage)
     }
 })

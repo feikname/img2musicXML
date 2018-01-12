@@ -41,25 +41,8 @@ input[type="button"] {
 .blue-btn, .blue-btn:hover { color: royalblue; }
 .blue-btn:active { color: blue; }
 
-/* Image Manager */
-#i2mx-img_mngr-visualize-image-div {
-    display: none; /* hidden until an image is visualized */
-    background-color: #dedede;
-    margin-bottom: 10px;
-    padding: 10px;
-}
-
-#i2mx-img_mngr-current-image {
-    display: block;
-    margin: 0 auto;
-    max-height: 7cm;
-    max-width: 100%;
-}
-
-#i2mx-img_mngr-hide-current-image-btn {
-    width: 100%;
-    margin-top: 15px;
-}
+/* Page Manager */
+.i2mx-page_mngr-file-name { display: inline; }
 
 /* Canvas */
 #i2mx-canvas {
@@ -88,7 +71,7 @@ input[type="button"] {
 }
 
 /* About */
-pre {
+.i2mx-ver_info {
     background: #dedede;
     border: 1px solid black;
     overflow-x: auto;

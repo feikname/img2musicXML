@@ -7,7 +7,6 @@
     <meta name="description" content="Easily transcribe sheets in image format to MusicXML">
     <link rel="icon" href="favicon-min.png">
     <script src="js/i2mx_base.js" defer></script>
-    <script src="js/i2mx_image_manager.js" defer></script>
     <script src="js/i2mx_page_manager.js" defer></script>
     <script src="js/i2mx_drawing_canvas.js" defer></script>
     <script src="js/i2mx_loader.js" defer></script>
@@ -34,32 +33,6 @@
 
     <br>
 
-    <!-- Image manager -->
-    <span>
-        <strong style="color:teal">Images</strong><br>
-        Add or remove images here.
-    </span><br>
-
-    <br>
-
-    <div id="i2mx-image-manager" class="section">
-        <div id="i2mx-img_mngr-visualize-image-div">
-            <img id="i2mx-img_mngr-current-image">
-            <input type="button" id="i2mx-img_mngr-hide-current-image-btn" value="Hide">
-        </div>
-
-        Add file(s): <input type="file" id="i2mx-img_mngr-file-input" accept="image/*" multiple> |
-        <input type="button" id="i2mx-img_mngr-add-file-btn" value="Add"><br>
-
-        <br>
-
-        <div id="i2mx-img_mngr-file-list">
-            Oops! There are no files here yet.
-        </div>
-    </div>
-
-    <br>
-
     <!-- Page Manager -->
     <span>
         <strong style="color:teal">Pages</strong><br>
@@ -76,6 +49,9 @@
             Oops! There are no pages here yet.
         </div>
     </div>
+
+    <input id="i2mx-page_mngr-assign-image-to-item-input" style="display:none;"
+        type="file" multiple="false" >
 
     <br>
 
@@ -142,7 +118,7 @@
         <strong style="color:tomato">About this version</strong><br>
         Read here information about this version.
     </span><br>
-<pre>img2musicXML
+<pre class="i2mx-ver_info">img2musicXML
 -----
 Version:           v0.1-Alpha
 Development start: 2016-10-05 (YYYY-MM-DD) [BRT]

@@ -10,7 +10,6 @@ i2mx.load = function() {
     i2mx.Elements.lastModification().innerHTML = i2mx.Data.lastModification
 
     // Load sections
-    i2mx.ImageManager.load()
     i2mx.PageManager.load()
     i2mx.DrawingCanvas.load()
 }
