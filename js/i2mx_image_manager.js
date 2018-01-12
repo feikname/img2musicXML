@@ -79,7 +79,7 @@ window.i2mx.ImageManager = new (function() {
     this.createImgHTML = function(img, id, ord) {
         // Create "Remove from list" button
         var imgDeleteBtn = document.createElement("input")
-        imgDeleteBtn.type = "submit"
+        imgDeleteBtn.type = "button"
         imgDeleteBtn.classList.add("i2mx-img_mngr-remove-item-btn")
         imgDeleteBtn.classList.add("red-btn")
         imgDeleteBtn.classList.add("button-as-text")
@@ -88,7 +88,7 @@ window.i2mx.ImageManager = new (function() {
 
         // Create "View" button
         var imgViewBtn = document.createElement("input")
-        imgViewBtn.type = "submit"
+        imgViewBtn.type = "button"
         imgViewBtn.classList.add("i2mx-img_mngr-visualize-item-btn")
         imgViewBtn.classList.add("blue-btn")
         imgViewBtn.classList.add("button-as-text")

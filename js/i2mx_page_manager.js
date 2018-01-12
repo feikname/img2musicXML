@@ -24,7 +24,7 @@ window.i2mx.PageManager = new (function() {
     this.createPageHTML = function(id, ord) {
         // Create "Remove page" button
         var pageDeleteBtn = document.createElement("input")
-        pageDeleteBtn.type = "submit"
+        pageDeleteBtn.type = "button"
         pageDeleteBtn.classList.add("i2mx-page_mngr-remove-item-btn")
         pageDeleteBtn.classList.add("red-btn")
         pageDeleteBtn.classList.add("button-as-text")
@@ -33,7 +33,7 @@ window.i2mx.PageManager = new (function() {
 
         // Create "Assign image" button
         var assignImgBtn = document.createElement("input")
-        assignImgBtn.type = "submit"
+        assignImgBtn.type = "button"
         assignImgBtn.classList.add("i2mx-page_mngr-assign-image-to-item-btn")
         assignImgBtn.classList.add("blue-btn")
         assignImgBtn.classList.add("button-as-text")
@@ -42,7 +42,7 @@ window.i2mx.PageManager = new (function() {
 
         // Create "Deassign image" button
         var deassignImgBtn = document.createElement("input")
-        deassignImgBtn.type = "submit"
+        deassignImgBtn.type = "button"
         deassignImgBtn.classList.add("i2mx-page_mngr-deassign-image-btn")
         deassignImgBtn.classList.add("red-btn")
         deassignImgBtn.classList.add("button-as-text")
@@ -51,7 +51,7 @@ window.i2mx.PageManager = new (function() {
 
         // Create "Open in canvas" button
         var pageOpenBtn = document.createElement("input")
-        pageOpenBtn.type = "submit"
+        pageOpenBtn.type = "button"
         pageOpenBtn.classList.add("i2mx-page_mngr-open-item-btn")
         pageOpenBtn.classList.add("blue-btn")
         pageOpenBtn.classList.add("button-as-text")
