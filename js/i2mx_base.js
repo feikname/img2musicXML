@@ -14,7 +14,7 @@ i2mx.Data = new (function() {
     this.version_minor = 0
     this.version_patch = 0
 
-    this.lastModification = "2018-01-10" // YYYY-MM-DD
+    this.lastModification = "2018-01-12" // YYYY-MM-DD
 })
 
 // @TODO: Cache system?
@@ -23,27 +23,6 @@ i2mx.Elements = new (function() {
     // "About"
     this.lastModification = function() {
         var id = "i2mx-ver_info-last-modification"
-        return document.getElementById(id)
-    }
-
-    // "Image manager"
-    this.imageList = function() {
-        var id = "i2mx-img_mngr-file-list"
-        return document.getElementById(id)
-    }
-
-    this.addImageBtn = function() {
-        var id = "i2mx-img_mngr-add-file-btn"
-        return document.getElementById(id)
-    }
-
-    this.hideImageBtn = function() {
-        var id = "i2mx-img_mngr-hide-current-image-btn"
-        return document.getElementById(id)
-    }
-
-    this.fileInput = function() {
-        var id = "i2mx-img_mngr-file-input"
         return document.getElementById(id)
     }
 
