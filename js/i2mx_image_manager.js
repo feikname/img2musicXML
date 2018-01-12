@@ -82,7 +82,7 @@ window.i2mx.ImageManager = new (function() {
         imgDeleteBtn.type = "button"
         imgDeleteBtn.classList.add("i2mx-img_mngr-remove-item-btn")
         imgDeleteBtn.classList.add("red-btn")
-        imgDeleteBtn.classList.add("button-as-text")
+        imgDeleteBtn.classList.add("button-as-anchor")
         imgDeleteBtn.value = "Remove from list"
         imgDeleteBtn.setAttribute("data-image-id", id.toString())
 
@@ -91,7 +91,7 @@ window.i2mx.ImageManager = new (function() {
         imgViewBtn.type = "button"
         imgViewBtn.classList.add("i2mx-img_mngr-visualize-item-btn")
         imgViewBtn.classList.add("blue-btn")
-        imgViewBtn.classList.add("button-as-text")
+        imgViewBtn.classList.add("button-as-anchor")
         imgViewBtn.value = "View"
         imgViewBtn.setAttribute("data-image-id", id.toString())
 

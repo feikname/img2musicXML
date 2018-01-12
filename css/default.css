@@ -20,11 +20,12 @@ html {
     padding: 5px;
 }
 
+/* Buttons */
 input[type="button"] {
     cursor: pointer;
 }
 
-.button-as-text {
+.button-as-anchor {
     text-decoration: none;
     border: none;
     background: transparent;
@@ -32,7 +33,15 @@ input[type="button"] {
     margin-right: 0;
     padding: 0;
 }
+.button-as-anchor:hover, .button-as-anchor:active { text-decoration: underline; }
 
+.red-btn, .red-btn:hover { color: darkred; }
+.red-btn:active { color: red; }
+
+.blue-btn, .blue-btn:hover { color: royalblue; }
+.blue-btn:active { color: blue; }
+
+/* Image Manager */
 #i2mx-img_mngr-visualize-image-div {
     display: none; /* hidden until an image is visualized */
     background-color: #dedede;
@@ -52,34 +61,7 @@ input[type="button"] {
     margin-top: 15px;
 }
 
-.red-btn {
-    color: darkred;
-}
-
-.red-btn:hover {
-    color: darkred;
-    text-decoration: underline;
-}
-
-.red-btn:active {
-    color: red;
-    text-decoration: underline;
-}
-
-.blue-btn {
-    color: royalblue;
-}
-
-.blue-btn:hover {
-    color: royalblue;
-    text-decoration: underline;
-}
-
-.blue-btn:active {
-    color: blue;
-    text-decoration: underline;
-}
-
+/* Canvas */
 #i2mx-canvas {
     display: block;
     margin: 0 auto;
@@ -105,6 +87,10 @@ input[type="button"] {
     padding: 10px;
 }
 
+/* About */
 pre {
+    background: #dedede;
+    border: 1px solid black;
     overflow-x: auto;
+    padding: 5px;
 }
