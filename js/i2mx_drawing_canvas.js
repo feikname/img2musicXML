@@ -52,8 +52,13 @@ window.i2mx.DrawingCanvas = new (function() {
     this.openPage = function(page_id) {
         this.currentPageId = page_id
 
-        var img = i2mx.PageManager.pages[page_id].assignedImage
+        this.updateBackgroundImageTo(i2mx.PageManager.pages[page_id].assignedImage)
 
+        i2mx.Elements.closeCurrentPageBtn().style.display = "block"
+        i2mx.Elements.canvasImageSettings().style.display = "block"
+    }
+
+    this.updateBackgroundImageTo = function(img) {
         // Resize the canvas to match the image dimensions
         var fileReader = new FileReader()
         fileReader.onload = function(e) {
@@ -85,12 +90,8 @@ window.i2mx.DrawingCanvas = new (function() {
            }
         }
 
-        fileReader.readAsDataURL(i2mx.PageManager.pages[page_id].assignedImage)
-
-        i2mx.Elements.closeCurrentPageBtn().style.display = "block"
-        i2mx.Elements.canvasImageSettings().style.display = "block"
+        fileReader.readAsDataURL(img)
     }
-
     this.load = function() {
         this.ctx = i2mx.Elements.drawingCanvas().getContext('2d')
 

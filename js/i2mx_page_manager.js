@@ -23,6 +23,11 @@ window.i2mx.PageManager = new (function() {
     this.event.deletePage = function() {
         var page_id = parseInt(this.getAttribute("data-page-id"))
 
+        // If the currently opened page is the one deleted, close it
+        if(i2mx.DrawingCanvas.currentPageId == page_id) {
+            i2mx.DrawingCanvas.closeCurrentPage()
+        }
+
         i2mx.PageManager.pages[page_id] = null
         i2mx.PageManager.activePages--
 
@@ -46,12 +51,6 @@ window.i2mx.PageManager = new (function() {
             i2mx.PageManager.pages[page_id].assignedImage = file
             i2mx.PageManager.render()
 
-            // If the currently opened page contained the image, close it.
-            // TODO: Change this to redraw canvas with the newly added image
-            if(i2mx.DrawingCanvas.currentPageId == page_id) {
-                i2mx.DrawingCanvas.closeCurrentPage()
-            }
-
             return
         }
 
@@ -73,8 +72,8 @@ window.i2mx.PageManager = new (function() {
     }
 
     this.event.openPageInCanvas = function() {
-         var page_id = parseInt(this.getAttribute("data-page-id"))
-         i2mx.DrawingCanvas.openPage(page_id)
+        var page_id = parseInt(this.getAttribute("data-page-id"))
+        i2mx.DrawingCanvas.openPage(page_id)
     }
 
     this.createPageHTML = function(id, ord) {
