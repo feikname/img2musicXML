@@ -73,18 +73,26 @@ window.i2mx.DrawingCanvas = new (function() {
                 canvas_el.width = img_obj.width
                 canvas_el.height = img_obj.height
 
-                if(img_obj.width > img_obj.height) {
-                    canvas_el.style.width = img_obj.width + "px"
-                    canvas_el.style.height = "auto"
-                } else {
-                    canvas_el.style.width = "auto"
-                    canvas_el.style.height = img_obj.height + "px"
-                }
+                if(!i2mx.Elements.disableDownscalingHack().checked) {
+                    if(img_obj.width > img_obj.height) {
+                        canvas_el.style.width = img_obj.width + "px"
+                        canvas_el.style.height = "auto"
+                    } else {
+                        canvas_el.style.width = "auto"
+                        canvas_el.style.height = img_obj.height + "px"
+                    }
 
-                var offsetWidth = canvas_el.offsetWidth
-                var offsetHeight = canvas_el.offsetHeight
-                canvas_el.width = offsetWidth
-                canvas_el.height = offsetHeight
+
+                    var offsetWidth = canvas_el.offsetWidth
+                    var offsetHeight = canvas_el.offsetHeight
+                    canvas_el.width = offsetWidth
+                    canvas_el.height = offsetHeight
+                } else {
+                    canvas_el.style.width = img_obj.width + "px"
+                    canvas_el.style.height = img_obj.height + "px"
+                    canvas_el.style.maxWidth = "none"
+                    canvas_el.style.maxHeight = "none"
+                }
 
                 i2mx.DrawingCanvas.render()
            }

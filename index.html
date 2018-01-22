@@ -67,7 +67,7 @@
 
     <br>
 
-    <div id="i2mx-canvas-image-settings">
+    <div id="i2mx-canvas-image-settings" class="grey-div">
         Vertical zoom: <br>
         Horizontal zoom: <br>
         X offset: <br>
@@ -114,6 +114,36 @@
         <strong style="color:purple">Export to MusicXML</strong><br>
         Export your project to musicXML here.
     </span><br>
+
+    <br>
+
+    <!-- Hacks -->
+    <span>
+        <strong style="color:red">Hacks</strong><br>
+        Those might be very unstable, do not blame me or report any bugs if
+        you're using any of these.
+    </span><br>
+
+    <br>
+
+    <div class="grey-div">
+        <div class="i2mx-hacks-item">
+            <input type="checkbox" id="i2mx-hacks-disable-downscaling" value="Disable downscaling">
+            Map each image pixel to a CSS pixel (disable downscaling)
+            <details>
+                  Might cause memory and/or performance issues depending on image
+                size and the device specs. It's okay to use it if the image is
+                reasonably sized for your device.<br><br>
+
+                  Takes effect once a page is (re)opened in canvas.<br>
+
+                  Requires page refresh to be unset.<br><br>
+
+                  This hack will be removed once decent canvas responsiveness is
+                implemented.
+            </details>
+        </div>
+    </div>
 
     <br>
 

@@ -41,6 +41,14 @@ input[type="button"] {
 .blue-btn, .blue-btn:hover { color: royalblue; }
 .blue-btn:active { color: blue; }
 
+/* General */
+.grey-div {
+    background-color: #dedede;
+    border: 1px solid #c2c2c2;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
 /* Page Manager */
 .i2mx-page_mngr-file-name { display: inline; }
 .i2mx-page_mngr-add-new-page-label { /* https://stackoverflow.com/a/2187796/3109177 */
@@ -65,17 +73,18 @@ input[type="button"] {
 }
 
 #i2mx-canvas-close-current-page-btn {
+    display: none; /* hidden until a page is opened */
     width: 100%;
     margin-top: 5px;
-    display: none; /* hidden until a page is opened */
 }
 
 #i2mx-canvas-image-settings {
     display: none; /* hidden until a page is opened */
-    background-color: #dedede;
-    border: 1px solid #c2c2c2;
-    margin-bottom: 10px;
-    padding: 10px;
+}
+
+/* Hacks */
+.i2mx-hacks-item details {
+    padding-left: 1.8em;
 }
 
 /* About */

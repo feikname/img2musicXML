@@ -57,6 +57,12 @@ i2mx.Elements = new (function() {
       var id = "i2mx-canvas-image-settings"
       return document.getElementById(id)
     }
+
+    // "Hacks"
+    this.disableDownscalingHack = function() {
+        var id = "i2mx-hacks-disable-downscaling"
+        return document.getElementById(id)
+    }
 })
 
 // https://stackoverflow.com/a/5306832/3109177
