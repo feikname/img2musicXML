@@ -25,6 +25,9 @@ window.i2mx.PageManager = new (function() {
     this.event.deletePage = function() {
         var page_id = parseInt(this.getAttribute("data-page-id"))
 
+        confirmationMessage = "This will delete this entire page, are you sure? "
+        if(!(confirm(confirmationMessage))) { return }
+
         // If the currently opened page is the one deleted, close it
         if(i2mx.DrawingCanvas.currentPageId == page_id) {
             i2mx.DrawingCanvas.closeCurrentPage()
@@ -85,10 +88,13 @@ window.i2mx.PageManager = new (function() {
     this.event.deassignImageFromPage = function() {
         var page_id = parseInt(this.getAttribute("data-page-id"))
 
+        confirmationMessage = "This will delete everything you've drawed in this "
+            + "page, are you sure?"
+        if(!(confirm(confirmationMessage))) { return }
+
         i2mx.PageManager.pages[page_id].assignedImage = null
 
         // If the currently opened page contained the image, close it.
-        // TODO: Change this to redraw canvas without the image
         if(i2mx.DrawingCanvas.currentPageId == page_id) {
             i2mx.DrawingCanvas.closeCurrentPage()
         }
