@@ -37,11 +37,6 @@ i2mx.Elements = new (function() {
         return document.getElementById(id)
     }
 
-    this.addNewPageBtn = function() {
-        var id = "i2mx-page_mngr-add-new-page-btn"
-        return document.getElementById(id)
-    }
-
     this.imgInput = function() {
         var id = "i2mx-page_mngr-assign-image-to-item-input"
         return document.getElementById(id)
