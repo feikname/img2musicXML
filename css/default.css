@@ -80,6 +80,7 @@ input[type="button"] {
 
 #i2mx-canvas-image-settings {
     display: none; /* hidden until a page is opened */
+    line-height: 1.6;
 }
 
 /* Hacks */
